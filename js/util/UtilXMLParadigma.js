@@ -96,4 +96,25 @@ class UtilXMLParadigma {
     }
 
 
+    verificarPrioridadeDaInformacao(data){
+        let msg = "";
+        let tag = "";
+
+        for (var campo in data) {
+            console.log(campo + ' = ' + data[campo]);     
+            
+            if(campo == "severidade" && data[campo] == 1){
+                console.log("Nao continua");     
+            }       
+            if(campo == "msg"){
+                msg = data[campo];
+            } 
+            if(campo == "tag"){
+                tag = data[campo];
+            } 
+          }
+          this.msnValidacao += this.montarMensagem(msg, null, tag, null);
+
+    }
+
 }

@@ -3,12 +3,13 @@ class PProcessoOrdemCompraDTO extends UtilXMLParadigma {
 
         super();
         this._cdSolicitacaoCompraPeIntegrado;
-        this._cdUGResponsavelLicitacao;
+        //this._cdUGResponsavelLicitacao;
         this._cdUnidadeGestoraGestao;
         this._cdUnidadeGestora;
         this._dsResumidaSolicitacaoCompra;
         this._nuAnoSolicitacaoCompra;
         this._lstOtdItensSA = [];
+        this._dQtItem;
         
         this.carregarDadosBasicosSA(pProcessoOrdemCompraDTO, cdUGResponsavelLicitacao);
 
@@ -31,12 +32,11 @@ class PProcessoOrdemCompraDTO extends UtilXMLParadigma {
         return sa + this._lstOtdItensSA;
     }
     
+    // Recuperando as informações basicas Ordem de Compra - PProcessoOrdemCompraDTO
     carregarDadosBasicosSA(pProcessoOrdemCompraDTO, cdUGResponsavelLicitacao) {
     
-        //let saSAD                           = pProcessoOrdemCompraDTO;
-    
         this.cdSolicitacaoCompraPeIntegrado = this.retornarValor(pProcessoOrdemCompraDTO, "sCdOrdemCompraEmpresa", true);
-        this.cdUGResponsavelLicitacao       = cdUGResponsavelLicitacao;
+        //this.cdUGResponsavelLicitacao       = cdUGResponsavelLicitacao;
         this.cdUnidadeGestoraGestao         = this.retornarValor(pProcessoOrdemCompraDTO, "sCdGestao", true);
         this.cdUnidadeGestora               = this.retornarValor(pProcessoOrdemCompraDTO, "sCdComprador", true);
         this.dsResumidaSolicitacaoCompra    = this.retornarValor(pProcessoOrdemCompraDTO, "sDsOrdemCompra", true);
@@ -130,6 +130,17 @@ class PProcessoOrdemCompraDTO extends UtilXMLParadigma {
             this._nuAnoSolicitacaoCompra = nuAnoSolicitacaoCompra;
         } else {
             this._msnValidacao += this.montarMensagem('Data emissão solicitacao aquisição', 'lsPProcessoOrdemCompraDTO', 'tDtEmissao', null);
+        }
+    }
+
+    get dQtItem() {
+        return this._dQtItem;
+        }
+    set dQtItem(dQtItem) {
+        if (dQtItem != null) {
+            this._dQtItem = dQtItem;
+        } else {
+            this._msnValidacao += this.montarMensagem('Quantidade de itens da solicitacao aquisição', 'lsPProcessoOrdemCompraDTO', 'dQtItem', null);
         }
     }
 

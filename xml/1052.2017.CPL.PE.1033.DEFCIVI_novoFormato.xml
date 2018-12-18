@@ -1,0 +1,77 @@
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+   <s:Body>
+      <RetornarPProcessoResultadoNegociacaoResponse xmlns="http://tempuri.org/">
+         <RetornarPProcessoResultadoNegociacaoResult xmlns:a="http://schemas.datacontract.org/2004/07/Paradigma.Wbc.Servico.DTO" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+            <a:PProcessoResultadoParcialDTO>
+               <a:dQtFornecedoresConvidados></a:dQtFornecedoresConvidados>
+               <a:dQtFornecedoresHabilitados>2</a:dQtFornecedoresHabilitados>
+               <a:dQtFornecedoresParticipantes></a:dQtFornecedoresParticipantes>
+               <a:lstPPProcessoOrdemCompra>
+                  <PProcessoOrdemCompraDTO>
+                     <lstPProcessoOrdemCompraRequisicao>
+                        <PProcessoOrdemCompraRequisicaoDTO>
+                           <dQtItem>10000.0000</dQtItem>
+                           <dVlReferencia>12.0000</dVlReferencia>
+                           <sCdItemRequisicaoEmpresa>1</sCdItemRequisicaoEmpresa>
+                           <sCdProduto>127850</sCdProduto>
+                           <sCdRequisicaoEmpresa>110402000012017000040</sCdRequisicaoEmpresa>
+                           <sCdUnidadeMedida>1</sCdUnidadeMedida>
+                        </PProcessoOrdemCompraRequisicaoDTO>
+                     </lstPProcessoOrdemCompraRequisicao>
+                     <sCdComprador>150101</sCdComprador>
+                     <sCdGestao>00001</sCdGestao>
+                     <sCdOrdemCompraEmpresa>110402000012017000040</sCdOrdemCompraEmpresa>
+                     <sCdUsuarioComprador i:nil="true"/>
+                     <sDsOrdemCompra>EN</sDsOrdemCompra>
+                     <tDtEmissao>2017-11-07T16:13:10.22</tDtEmissao>
+                  </PProcessoOrdemCompraDTO>
+               </a:lstPPProcessoOrdemCompra>
+               <a:lstPProcessoAnexo>
+                  <a:PProcessoAnexoDTO>
+                     <a:sUrlAnexo>http://www.simuladopeintegrado.pe.gov.br/upload/EditalAnexos/wbc20171107041500.xlsx</a:sUrlAnexo>
+                  </a:PProcessoAnexoDTO>
+               </a:lstPProcessoAnexo>
+               <a:lstPProcessoItem>
+                  <PProcessoItemDTO>
+                     <dQtItem>10000.0000</dQtItem>
+                     <dQtParticipanteItem>1</dQtParticipanteItem>
+                     <dVlLance>12.0000</dVlLance>
+                     <dVlReferencia>12.0000</dVlReferencia>
+                     <lstPProcessoOrdemCompraRequisicao>
+                        <a:PProcessoOrdemCompraRequisicaoDTO>
+                           <a:sCdComprador>110402</a:sCdComprador>
+                           <a:sCdItemRequisicaoEmpresa>1</a:sCdItemRequisicaoEmpresa>
+                           <a:sCdRequisicaoEmpresa>110402000012017000040</a:sCdRequisicaoEmpresa>
+                        </a:PProcessoOrdemCompraRequisicaoDTO>
+                     </lstPProcessoOrdemCompraRequisicao>
+                     <nCdItemSequencial>1</nCdItemSequencial>
+                     <nCdLoteSequencial i:nil="true"/>
+                     <nCdMarca>24</nCdMarca>
+                     <nStSituacao>7</nStSituacao>
+                     <sCdFornecedor>0004885702</sCdFornecedor>
+                     <sDsMarca>ULTRA</sDsMarca>
+                     <sNrProtocolo>492F33C6-BC6A-425F-9529-A6B8D3AC0A4D</sNrProtocolo>
+                     <tDtEncerramento>2017-11-07T17:27:15.707</tDtEncerramento>
+                     <tDtFinalizado>2017-11-14T11:01:12.373</tDtFinalizado>
+                     <tDtRevogado i:nil="true"/>
+                  </PProcessoItemDTO>
+               </a:lstPProcessoItem>
+               <a:lstPProcessoLote/>
+               <a:nCdModalidade i:nil="true"/>
+               <a:nCdModulo>18</a:nCdModulo>
+               <a:nIdTipoApuracao>1</a:nIdTipoApuracao>
+               <a:sCdComprador>110402</a:sCdComprador>
+               <a:sDsObjeto>EN</a:sDsObjeto>
+               <a:sDsObservacao>&lt;span style="font-weight:bold;">MARCAS HOMOLOGADAS E DESCRIÇÃO DETALHADA DO MATERIAL: &lt;/span>Para visualiza-las clique na Descrição Resumida. Somente serão aceitas as propostas para essas MARCAS.  &lt;br>&lt;span style="font-weight:bold;">ALERTAMOS QUE ANTES DO ENVIO DA PROPOSTA, AS EMPRESAS DEVERÃO CONSULTAR O EDITAL E VERIFICAR A DOCUMENTAÇÃO EXIGIDA PARA A HABILITAÇÃO.&lt;/span></a:sDsObservacao>
+               <a:sNrEdital>1052.2017.CPL.PE.1033.DEFCIVI</a:sNrEdital>
+               <a:sNrProcessoDisplay>1052.2017.CPL.PE.1033.DEFCIVI</a:sNrProcessoDisplay>
+               <a:tDtAgendamento>2017-11-07T16:17:41.747</a:tDtAgendamento>
+               <a:tDtFinalDisputa i:nil="true"/>
+               <a:tDtFinalProposta>2017-11-07T16:29:00</a:tDtFinalProposta>
+               <a:tDtInicialDisputa>2017-11-07T16:30:00</a:tDtInicialDisputa>
+               <a:tDtInicialProposta>2017-11-07T16:25:00</a:tDtInicialProposta>
+            </a:PProcessoResultadoParcialDTO>
+         </RetornarPProcessoResultadoNegociacaoResult>
+      </RetornarPProcessoResultadoNegociacaoResponse>
+   </s:Body>
+</s:Envelope>

@@ -25,8 +25,8 @@
                 const otdProcesso               = new OTDProcessoResultadoDTO_cicero(pProcessoResultadoParcial);
                 //console.log(otdProcesso);
                 console.log(otdProcesso.getMsgProcessoResultado());
-                document.getElementById('conteudo').innerHTML = otdProcesso.lstPPProcessoOrdemCompra();
-                //document.getElementById('conteudo').innerHTML = otdProcesso.getMsgProcessoResultado();
+                //document.getElementById('conteudo').innerHTML = otdProcesso.lstPPProcessoOrdemCompra();
+                document.getElementById('conteudo').innerHTML = otdProcesso.getMsgProcessoResultado();
 
             });
             leitor.readAsText(file);

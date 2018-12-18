@@ -1,0 +1,129 @@
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+   <s:Body>
+      <RetornarPProcessoResultadoNegociacaoResponse xmlns="http://tempuri.org/">
+         <RetornarPProcessoResultadoNegociacaoResult xmlns:a="http://schemas.datacontract.org/2004/07/Paradigma.Wbc.Servico.DTO" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+            <a:PProcessoResultadoParcialDTO>
+               <a:dQtFornecedoresConvidados>859</a:dQtFornecedoresConvidados>
+               <a:dQtFornecedoresHabilitados>1</a:dQtFornecedoresHabilitados>
+               <a:dQtFornecedoresParticipantes>3</a:dQtFornecedoresParticipantes>
+               <a:lstPPProcessoOrdemCompra>
+                  <a:PProcessoOrdemCompraNegociacaoDTO>
+                     <a:lstPProcessoOrdemCompraRequisicao>
+                        <a:PProcessoOrdemCompraRequisicaoNegociacaoDTO>
+                           <a:dQtItem>2.0000</a:dQtItem>
+                           <a:dVlReferencia>900.0000</a:dVlReferencia>
+                           <a:sCdItemRequisicaoEmpresa>2147483647</a:sCdItemRequisicaoEmpresa>
+                           <a:sCdProduto>1388967</a:sCdProduto>
+                           <a:sCdRequisicaoEmpresa>150101000012018000087</a:sCdRequisicaoEmpresa>
+                           <a:sCdUnidadeMedida>1</a:sCdUnidadeMedida>
+                        </a:PProcessoOrdemCompraRequisicaoNegociacaoDTO>
+                        <a:PProcessoOrdemCompraRequisicaoNegociacaoDTO>
+                           <a:dQtItem>2.0000</a:dQtItem>
+                           <a:dVlReferencia>800.0000</a:dVlReferencia>
+                           <a:sCdItemRequisicaoEmpresa>2147483647</a:sCdItemRequisicaoEmpresa>
+                           <a:sCdProduto>1526740</a:sCdProduto>
+                           <a:sCdRequisicaoEmpresa>150101000012018000087</a:sCdRequisicaoEmpresa>
+                           <a:sCdUnidadeMedida>1</a:sCdUnidadeMedida>
+                        </a:PProcessoOrdemCompraRequisicaoNegociacaoDTO>
+                     </a:lstPProcessoOrdemCompraRequisicao>
+                     <a:sCdComprador>150101</a:sCdComprador>
+                     <a:sCdGestao>00001</a:sCdGestao>
+                     <a:sCdOrdemCompraEmpresa>150101000012018000087</a:sCdOrdemCompraEmpresa>
+                     <a:sCdUsuarioComprador i:nil="true"/>
+                     <a:sDsOrdemCompra>PROCESSO POR LOTE - SEFAZ</a:sDsOrdemCompra>
+                     <a:tDtEmissao>2018-12-11T10:43:56.39</a:tDtEmissao>
+                  </a:PProcessoOrdemCompraNegociacaoDTO>
+               </a:lstPPProcessoOrdemCompra>
+               <a:lstPProcessoAnexo>
+                  <a:PProcessoAnexoDTO>
+                     <a:sUrlAnexo>https://www.simuladopeintegrado.pe.gov.br/upload/EditalAnexos/wbc201812111130173544666.PNG</a:sUrlAnexo>
+                  </a:PProcessoAnexoDTO>
+               </a:lstPProcessoAnexo>
+               <a:lstPProcessoItem>
+                  <a:PProcessoItemNegociacaoDTO>
+                     <a:dQtItem>2.0000</a:dQtItem>
+                     <a:dQtParticipanteItem>3</a:dQtParticipanteItem>
+                     <a:dVlLance>1770.0000</a:dVlLance>
+                     <a:dVlReferencia>900.0000</a:dVlReferencia>
+                     <a:lstPProcessoOrdemCompraRequisicao>
+                        <a:PProcessoOrdemCompraRequisicaoDTO>
+                           <a:sCdComprador>150101</a:sCdComprador>
+                           <a:sCdItemRequisicaoEmpresa>2147483647</a:sCdItemRequisicaoEmpresa>
+                           <a:sCdRequisicaoEmpresa>150101000012018000087</a:sCdRequisicaoEmpresa>
+                        </a:PProcessoOrdemCompraRequisicaoDTO>
+                     </a:lstPProcessoOrdemCompraRequisicao>
+                     <a:nCdItemSequencial>1</a:nCdItemSequencial>
+                     <a:nCdLoteSequencial>1</a:nCdLoteSequencial>
+                     <a:nCdMarca>1</a:nCdMarca>
+                     <a:nStSituacao>7</a:nStSituacao>
+                     <a:sCdFornecedor>0000617382</a:sCdFornecedor>
+                     <a:sDsMarca>NENHUMA MARCA REGISTRADA</a:sDsMarca>
+                     <a:sNrProtocolo i:nil="true"/>
+                     <a:tDtEncerramento i:nil="true"/>
+                     <a:tDtFinalizado>2018-12-11T15:03:56.72</a:tDtFinalizado>
+                     <a:tDtRevogado i:nil="true"/>
+                  </a:PProcessoItemNegociacaoDTO>
+                  <a:PProcessoItemNegociacaoDTO>
+                     <a:dQtItem>2.0000</a:dQtItem>
+                     <a:dQtParticipanteItem>3</a:dQtParticipanteItem>
+                     <a:dVlLance>1570.0000</a:dVlLance>
+                     <a:dVlReferencia>800.0000</a:dVlReferencia>
+                     <a:lstPProcessoOrdemCompraRequisicao>
+                        <a:PProcessoOrdemCompraRequisicaoDTO>
+                           <a:sCdComprador>150101</a:sCdComprador>
+                           <a:sCdItemRequisicaoEmpresa>2147483647</a:sCdItemRequisicaoEmpresa>
+                           <a:sCdRequisicaoEmpresa>150101000012018000087</a:sCdRequisicaoEmpresa>
+                        </a:PProcessoOrdemCompraRequisicaoDTO>
+                     </a:lstPProcessoOrdemCompraRequisicao>
+                     <a:nCdItemSequencial>1</a:nCdItemSequencial>
+                     <a:nCdLoteSequencial>2</a:nCdLoteSequencial>
+                     <a:nCdMarca>4581</a:nCdMarca>
+                     <a:nStSituacao>7</a:nStSituacao>
+                     <a:sCdFornecedor>0000617382</a:sCdFornecedor>
+                     <a:sDsMarca>INCOMEL</a:sDsMarca>
+                     <a:sNrProtocolo i:nil="true"/>
+                     <a:tDtEncerramento i:nil="true"/>
+                     <a:tDtFinalizado>2018-12-11T15:03:56.72</a:tDtFinalizado>
+                     <a:tDtRevogado i:nil="true"/>
+                  </a:PProcessoItemNegociacaoDTO>
+               </a:lstPProcessoItem>
+               <a:lstPProcessoLote>
+                  <a:PProcessoLoteNegociacaoDTO>
+                     <a:dVlLance i:nil="true"/>
+                     <a:nCdLote>276</a:nCdLote>
+                     <a:nCdLoteSequencial>1</a:nCdLoteSequencial>
+                     <a:nStLote>7</a:nStLote>
+                     <a:sCdFornecedor>0000617382</a:sCdFornecedor>
+                     <a:sDsLote>LOTE A</a:sDsLote>
+                     <a:tDtEncerramento>2018-12-11T14:53:16.107</a:tDtEncerramento>
+                     <a:tDtFinalizado>2018-12-11T15:03:56.72</a:tDtFinalizado>
+                  </a:PProcessoLoteNegociacaoDTO>
+                  <a:PProcessoLoteNegociacaoDTO>
+                     <a:dVlLance i:nil="true"/>
+                     <a:nCdLote>277</a:nCdLote>
+                     <a:nCdLoteSequencial>2</a:nCdLoteSequencial>
+                     <a:nStLote>7</a:nStLote>
+                     <a:sCdFornecedor>0000617382</a:sCdFornecedor>
+                     <a:sDsLote>LOTE B</a:sDsLote>
+                     <a:tDtEncerramento>2018-12-11T14:53:16.857</a:tDtEncerramento>
+                     <a:tDtFinalizado>2018-12-11T15:03:56.72</a:tDtFinalizado>
+                  </a:PProcessoLoteNegociacaoDTO>
+               </a:lstPProcessoLote>
+               <a:nCdModalidade i:nil="true"/>
+               <a:nCdModulo>18</a:nCdModulo>
+               <a:nIdTipoApuracao>2</a:nIdTipoApuracao>
+               <a:sCdComprador>150101</a:sCdComprador>
+               <a:sDsObjeto>PROCESSO POR LOTE - SEFAZ</a:sDsObjeto>
+               <a:sDsObservacao>&lt;span style="font-weight:bold;">MARCAS HOMOLOGADAS E DESCRIÇÃO DETALHADA DO MATERIAL: &lt;/span>Para visualiza-las clique na Descrição Resumida. Somente serão aceitas as propostas para essas MARCAS.  &lt;br>&lt;span style="font-weight:bold;">ALERTAMOS QUE ANTES DO ENVIO DA PROPOSTA, AS EMPRESAS DEVERÃO CONSULTAR O EDITAL E VERIFICAR A DOCUMENTAÇÃO EXIGIDA PARA A HABILITAÇÃO.&lt;/span></a:sDsObservacao>
+               <a:sNrEdital>0046.2018.SEFAZ.PE.0035.SEFAZ-PE</a:sNrEdital>
+               <a:sNrProcessoDisplay>0046.2018.SEFAZ.PE.0035.SEFAZ-PE</a:sNrProcessoDisplay>
+               <a:tDtAgendamento>2018-12-11T14:24:16.233</a:tDtAgendamento>
+               <a:tDtFinalDisputa i:nil="true"/>
+               <a:tDtFinalProposta>2018-12-11T14:38:00</a:tDtFinalProposta>
+               <a:tDtInicialDisputa>2018-12-11T14:40:00</a:tDtInicialDisputa>
+               <a:tDtInicialProposta>2018-12-11T14:25:00</a:tDtInicialProposta>
+            </a:PProcessoResultadoParcialDTO>
+         </RetornarPProcessoResultadoNegociacaoResult>
+      </RetornarPProcessoResultadoNegociacaoResponse>
+   </s:Body>
+</s:Envelope>

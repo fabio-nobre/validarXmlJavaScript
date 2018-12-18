@@ -31,12 +31,13 @@ class OTDProcessoResultadoDTO extends UtilXMLParadigma {
         this._lstPPRocessoLote = []; 
 
         this.carregarDadosBasicosResultadoDTO();
-        /* this.carregarlstPPProcessoOrdemCompra();
+        this.carregarlstPPProcessoOrdemCompra();
         this.carregarlstProcessoItemDTO();
-        this.carregarLstPProcessoLote(); */
+        this.carregarLstPProcessoLote(); 
 
     }
 
+    // Recuperando as informações basicas do documento xml - PProcessoResultadoParcialDTO
     carregarDadosBasicosResultadoDTO() {
 
         const xml = this._pProcessoResultadoParcialDTO;
@@ -112,8 +113,39 @@ class OTDProcessoResultadoDTO extends UtilXMLParadigma {
         /**/
     }
 
-    // Recuperando as informações basicas do documento xml
-    // Métodos GETs e SETs   
+    // Recuperando as informações referente a ordem de compra (SA) - PProcessoResultadoParcialDTO > lstPPProcessoOrdemCompra
+    carregarlstPPProcessoOrdemCompra() {
+
+        // lstPPProcessoOrdemCompra > PProcessoOrdemCompraDTO
+        let lstPPProcessoOrdemCompra = this._pProcessoResultadoParcialDTO[0].getElementsByTagName("a:lstPPProcessoOrdemCompra");
+        let lsPProcessoOrdemCompraDTO = lstPPProcessoOrdemCompra[0].getElementsByTagName("PProcessoOrdemCompraDTO");
+
+        for (let index = 0; index < lsPProcessoOrdemCompraDTO.length; index++) {
+
+            let ordemCompra = new PProcessoOrdemCompraDTO(lsPProcessoOrdemCompraDTO[index], this.cdUnidadeGestora);
+            this._lstPPRocessoOrdemCompraDTO[index] = ordemCompra;
+
+        }
+    } 
+
+    // Recuperando as informações referente aos itens - PProcessoResultadoParcialDTO > lstPProcessoItem
+    carregarlstProcessoItemDTO() {
+
+        // lstPProcessoItem > PProcessoItemDTO
+        const lstPProcessoItem = this._pProcessoResultadoParcialDTO[0].getElementsByTagName("a:lstPProcessoItem");
+        const lsPProcessoItemDTO = lstPProcessoItem[0].getElementsByTagName("PProcessoItemDTO");
+
+        for (let index = 0; index < lsPProcessoItemDTO.length; index++) {
+
+            let itemDTO = new PProcessoItemDTO(lsPProcessoItemDTO[index]);
+            this._lstPPRocessoItemDTO[index] = itemDTO;
+        }
+
+    }
+
+    
+    // Métodos GETs e SETs  
+
     // Quantidade de fornecedores total de convidados
     get qtFornecedoresConvidadosLicitacao(){
         return this._qtFornecedoresConvidadosLicitacao;
@@ -122,7 +154,16 @@ class OTDProcessoResultadoDTO extends UtilXMLParadigma {
         if (qtFornecedoresConvidados != null) {
             this._qtFornecedoresConvidadosLicitacao = qtFornecedoresConvidados;
         } else {
-            this.msnValidacao += this.montarMensagem('Quantidade de Fornecedores convidados', null, 'dQtFornecedoresConvidados', null);
+
+            let dados ={
+                  msg: 'Quantidade de Fornecedores convidados',
+                  severidade: 2,
+                  tag: 'dQtFornecedoresConvidados',
+                  obj:this
+                };
+
+            this.verificarPrioridadeDaInformacao(dados);
+            //this.msnValidacao += this.montarMensagem('Quantidade de Fornecedores convidados', null, 'dQtFornecedoresConvidados', null);
         }
     }
 
@@ -343,7 +384,7 @@ class OTDProcessoResultadoDTO extends UtilXMLParadigma {
     carregarLstPProcessoLote() {
 
         var lstPProcessoLote = this._pProcessoResultadoParcialDTO[0].getElementsByTagName("a:lstPProcessoLote");
-        var lsPProcessoLoteDTO = lstPProcessoLote[0].getElementsByTagName("a:PProcessoLoteDTO");
+        var lsPProcessoLoteDTO = lstPProcessoLote[0].getElementsByTagName("a:PProcessoLoteNegociacaoDTO");
 
         for (let index = 0; index < lsPProcessoLoteDTO.length; index++) {
             let lote = new PProcessoLoteDTO(lsPProcessoLoteDTO[index])
@@ -351,29 +392,6 @@ class OTDProcessoResultadoDTO extends UtilXMLParadigma {
         }
     }
 
-    carregarlstProcessoItemDTO() {
-        const lstPProcessoItem = this._pProcessoResultadoParcialDTO[0].getElementsByTagName("a:lstPProcessoItem");
-        const lsPProcessoItemDTO = lstPProcessoItem[0].getElementsByTagName("a:PProcessoItemDTO");
 
-        for (let index = 0; index < lsPProcessoItemDTO.length; index++) {
 
-            let itemDTO = new PProcessoItemDTO(lsPProcessoItemDTO[index]);
-            this._lstPPRocessoItemDTO[index] = itemDTO;
-        }
-
-    }
-
-    carregarlstPPProcessoOrdemCompra() {
-
-        let lstPPProcessoOrdemCompra = this._pProcessoResultadoParcialDTO[0].getElementsByTagName("a:lstPPProcessoOrdemCompra");
-        //let lsPProcessoOrdemCompraDTO = lstPPProcessoOrdemCompra[0].getElementsByTagName("a:PProcessoOrdemCompraDTO");
-        let lsPProcessoOrdemCompraDTO = lstPPProcessoOrdemCompra[0].getElementsByTagName("a:pprocessoordemcompradto");
-
-        for (let index = 0; index < lsPProcessoOrdemCompraDTO.length; index++) {
-
-            let ordemCompra = new PProcessoOrdemCompraDTO(lsPProcessoOrdemCompraDTO[index], this.cdUnidadeGestora);
-            this._lstPPRocessoOrdemCompraDTO[index] = ordemCompra;
-
-        }
-    } 
 }

@@ -4,15 +4,21 @@ class PProcessoItemDTO extends UtilXMLParadigma {
 
         super();
 
-        this._dtHomologacaoRatificacao;
-        this._dtAdjudicacao;
-        this._cdLicitacaoLote;
-        this._cdMaterialServicoItem;
-        this._sqItemSolicitacaoCompra;
-        this._dsItem;
-        this._cdUnidadeFornecimento;
-        this._dVlReferencia;
         this._dQtItemItemSa;
+        this._dQtParticipanteItemSa;        
+        this._dVlLanceSa;
+        this._dVlReferenciaSa;
+        this._nCdItemSequencialSa;
+        this._nCdLoteSequencialSa;
+        this._nCdMarcaSa;
+        this._nStSituacaoSa;
+        this._sCdFornecedorSa;
+        this._nDsMarcaSa;
+        this._sNrProtocoloSa;
+        this._tDtEncerramentoSa;
+        this._tDtFinalizadoSa;
+        this._tDtRevogadoSa;
+        
         this._lstItemResultadoDTO = [];
         this._lstItemEnderecoEValorReferencia = [];
         this.carregarDadosItem(pProcessoItem);
@@ -23,20 +29,236 @@ class PProcessoItemDTO extends UtilXMLParadigma {
 
         let item = pProcessoItem;
 
-        this.dtHomologacaoRatificacao = this.retornarValor(item, "a:tDtFinalizacao", true);
-        this.dtAdjudicacao = this.retornarValor(item, "a:tDtAdjudicacao", true);
-        this.cdLicitacaoLote = this.retornarValor(item, "a:nCdLoteSequencial", true);
-        this.cdMaterialServicoItem = this.retornarValor(item, "a:sCdProduto", true);
-        this.sqItemSolicitacaoCompra = this.retornarValor(item, "a:nCdItemSequencial", true);
-        this.dsItem = this.retornarValor(item, "a:sDsItem", true);
-        this.cdUnidadeFornecimento = this.retornarValor(item, "a:sCdUnidadeMedida", true);
-        this.dVlReferencia = this.retornarValor(item, "a:dVlReferencia", true);
-        this.dQtItemItemSa = this.retornarValor(item, "a:dQtItem", true);
-        this.lstItemEnderecoEValorReferencia = this.enderecoItensSAVencedorValorReferencia(item);
-        this.carregarLstProcessoItemResultadoDTO(pProcessoItem);
+        this.dQtItemItemSa          =   this.retornarValor(item, "dQtItem", true);
+        this.dQtParticipanteItemSa  =   this.retornarValor(item, "dQtParticipanteItem", true);
+        this.dVlLanceSa             =   this.retornarValor(item, "dVlLance", true);
+        this.dVlReferenciaSa        =   this.retornarValor(item, "dVlReferencia", true);
+        this.nCdItemSequencialSa    =   this.retornarValor(item, "nCdItemSequencial", true);
+        this.nCdLoteSequencialSa    =   this.retornarValor(item, "nCdLoteSequencial", true);
+        this.nCdMarcaSa             =   this.retornarValor(item, "nCdMarca", true);
+        this.nStSituacaoSa          =   this.retornarValor(item, "nStSituacao", true);
+        this.sCdFornecedorSa        =   this.retornarValor(item, "sCdFornecedor", true);
+        this.sDsMarcaSa             =   this.retornarValor(item, "sDsMarca", true);
+        this.sNrProtocoloSa         =   this.retornarValor(item, "sNrProtocolo", true);
+        this.tDtEncerramentoSa      =   this.retornarValor(item, "tDtEncerramento", true);
+        this.tDtFinalizadoSa        =   this.retornarValor(item, "tDtFinalizado", true);
+        this.tDtRevogadoSa          =   this.retornarValor(item, "tDtRevogado", true);
+    
+        this.retornarOTDOrdemCompraRequisicaoItensSA(pProcessoItem);
+        this._lstOtdOrdemCompraRequisicaoItensSA = [];
 
+        
+       // this.carregarLstProcessoOrdemCompraRequisicao(pProcessoItem);
+
+       /* 
+        this.lstItemEnderecoEValorReferencia = this.enderecoItensSAVencedorValorReferencia(item);
+        this.carregarLstProcessoItemResultadoDTO(pProcessoItem); */
 
     }
+
+    // Métodos GETs e SETs  
+    get dQtItemItemSa() {
+        return this._dQtItemItemSa;
+    }
+    set dQtItemItemSa(dQtItemItemSa) {
+        if (dQtItemItemSa != null) {
+            this._dQtItemItemSa = dQtItemItemSa;
+        } else {
+            this._msnValidacao += this.montarMensagem('Quantidade do item', 'lsPProcessoItemDTO', 'dQtItem', null);
+        }
+    }
+
+    get dQtParticipanteItemSa() {
+        return this._dQtParticipanteItemSa;
+    }
+    set dQtParticipanteItemSa(dQtParticipanteItemSa) {
+        if (dQtParticipanteItemSa != null) {
+            this._dQtParticipanteItemSa = dQtParticipanteItemSa;
+        } else {
+            this._msnValidacao += this.montarMensagem('Quantidade de participantes', 'lsPProcessoItemDTO', 'dQtParticipanteItem', null);
+        }
+    }
+
+    get dVlLanceSa() {
+        return this._dVlLanceSa;
+    }
+    set dVlLanceSa(dVlLanceSa) {
+        if (dVlLanceSa != null) {
+            this._dVlLanceSa = dVlLanceSa;
+        } else {
+            this._msnValidacao += this.montarMensagem('Valor do lance', 'lsPProcessoItemDTO', 'dVlLance', null);
+        }
+    }    
+
+    get dVlReferenciaSa() {
+        return this._dVlReferenciaSa;
+    }
+    set dVlReferenciaSa(dVlReferenciaSa) {
+        if (dVlReferenciaSa != null) {
+            this._dVlReferenciaSa = dVlReferenciaSa;
+        } else {
+            this._msnValidacao += this.montarMensagem('Valor de referencia', 'lsPProcessoItemDTO', 'dVlReferencia', null);
+        }
+    }  
+    
+    // Código Licitação Item
+    get nCdItemSequencialSa() {
+        return this._nCdItemSequencialSa;
+    }
+    set nCdItemSequencialSa(nCdItemSequencialSa) {
+        if (nCdItemSequencialSa != null) {
+            this._nCdItemSequencialSa = nCdItemSequencialSa;
+        } else {
+            this._msnValidacao += this.montarMensagem('Código Licitação Item', 'lsPProcessoItemDTO', 'nCdItemSequencial', null);
+        }
+    }
+
+    // Código Licitação Lote
+    get nCdLoteSequencialSa() {
+        return this._nCdLoteSequencialSa;
+    }
+    set nCdLoteSequencialSa(nCdLoteSequencialSa) {
+        if (nCdLoteSequencialSa != null) {
+            this._nCdLoteSequencialSa = nCdLoteSequencialSa;
+        } else {
+            this._msnValidacao += this.montarMensagem('Código Licitação Lote', 'lsPProcessoItemDTO', 'nCdLoteSequencial', null);
+        }
+    }
+
+    get nCdMarcaSa() {
+        return this._nCdMarcaSa;
+    }
+    set nCdMarcaSa(nCdMarcaSa) {
+        if (nCdMarcaSa != null) {
+            this._nCdMarcaSa = nCdMarcaSa;
+        } else {
+            this._msnValidacao += this.montarMensagem('Código da marca', 'lsPProcessoItemDTO', 'nCdMarca', null);
+        }
+    }
+
+    get nStSituacaoSa() {
+        return this._nStSituacaoSa;
+    }
+    set nStSituacaoSa(nStSituacaoSa) {
+        if (nStSituacaoSa != null) {
+            this._nStSituacaoSa = nStSituacaoSa;
+        } else {
+            this._msnValidacao += this.montarMensagem('Situação', 'lsPProcessoItemDTO', 'nStSituacao', null);
+        }
+    }
+
+    // Código do fornecedor
+    get sCdFornecedorSa() {
+        return this._sCdFornecedorSa;
+    }
+    set sCdFornecedorSa(sCdFornecedorSa) {
+        if (sCdFornecedorSa != null) {
+            this._sCdFornecedorSa = sCdFornecedorSa;
+        } else {
+            this._msnValidacao += this.montarMensagem('Código do fornecedor', 'lsPProcessoItemDTO', 'sCdFornecedor', null);
+        }
+    }
+    
+    get sDsMarcaSa() {
+        return this._sDsMarcaSa;
+    }
+    set sDsMarcaSa(sDsMarcaSa) {
+        if (sDsMarcaSa != null) {
+            this._sDsMarcaSa = sDsMarcaSa;
+        } else {
+            this._msnValidacao += this.montarMensagem('Descriçao da marca', 'lsPProcessoItemDTO', 'sDsMarca', null);
+        }
+    }
+
+    get sNrProtocoloSa() {
+        return this._sNrProtocoloSa;
+    }
+    set sNrProtocoloSa(sNrProtocoloSa) {
+        if (sNrProtocoloSa != null) {
+            this._sNrProtocoloSa = sNrProtocoloSa;
+        } else {
+            this._msnValidacao += this.montarMensagem('Número do protocolo da SA', 'lsPProcessoItemDTO', 'sNrProtocolo', null);
+        }
+    }
+    
+    get tDtEncerramentoSa() {
+        return this._tDtEncerramentoSa;
+    }
+    set tDtEncerramentoSa(tDtEncerramentoSa) {
+        if (tDtEncerramentoSa != null) {
+            this._tDtEncerramentoSa = tDtEncerramentoSa;
+        } else {
+            this._msnValidacao += this.montarMensagem('Data de encerramento', 'lsPProcessoItemDTO', 'tDtEncerramento', null);
+        }
+    }
+    
+    get tDtFinalizadoSa() {
+        return this._tDtFinalizadoSa;
+    }
+    set tDtFinalizadoSa(tDtFinalizadoSa) {
+        if (tDtFinalizadoSa != null) {
+            this._tDtFinalizadoSa = tDtFinalizadoSa;
+        } else {
+            this._msnValidacao += this.montarMensagem('Data de finalização', 'lsPProcessoItemDTO', 'tDtFinalizado', null);
+        }
+    }
+    
+    get tDtRevogadoSa() {
+        return this._tDtRevogadoSa;
+    }
+    set tDtRevogadoSa(tDtRevogadoSa) {
+        if (tDtRevogadoSa != null) {
+            this._tDtRevogadoSa = tDtRevogadoSa;
+        } else {
+            this._msnValidacao += this.montarMensagem('Data de revogação', 'lsPProcessoItemDTO', 'tDtRevogado', null);
+        }
+    }
+    
+    get sCdComprador() {
+        return this._sCdComprador;
+    }
+    set sCdComprador(sCdComprador) {
+        if (sCdComprador != null) {
+            this._sCdComprador = sCdComprador;
+        } else {
+            this._msnValidacao += this.montarMensagem('Código comprado item', 'lstPProcessoOrdemCompraRequisicao', 'sCdComprador', null);
+        }
+    }
+
+    get sCdItemRequisicaoEmpresa() {
+        return this._sCdItemRequisicaoEmpresa;
+    }
+    set sCdItemRequisicaoEmpresa(sCdItemRequisicaoEmpresa) {
+        if (sCdItemRequisicaoEmpresa != null) {
+            this._sCdItemRequisicaoEmpresa = sCdItemRequisicaoEmpresa;
+        } else {
+            this._msnValidacao += this.montarMensagem('Código requisicao empresa item', 'lstPProcessoOrdemCompraRequisicao', 'sCdItemRequisicaoEmpresa', null);
+        }
+    }
+
+    get sCdRequisicaoEmpresa() {
+        return this._sCdRequisicaoEmpresa;
+    }
+    set sCdRequisicaoEmpresa(sCdRequisicaoEmpresa) {
+        if (sCdRequisicaoEmpresa != null) {
+            this._sCdRequisicaoEmpresa = sCdRequisicaoEmpresa;
+        } else {
+            this._msnValidacao += this.montarMensagem('Código requisicao empresa item', 'lstPProcessoOrdemCompraRequisicao', 'sCdRequisicaoEmpresa', null);
+        }
+    }
+
+    get lstOtdOrdemCompraRequisicaoItensSA() {
+        return this._lstOtdOrdemCompraRequisicaoItensSA;
+    }
+    set lstOtdOrdemCompraRequisicaoItensSA(_lstOtdOrdemCompraRequisicaoItensSA) {
+        if (_lstOtdOrdemCompraRequisicaoItensSA != null) {
+            this._lstOtdOrdemCompraRequisicaoItensSA = _lstOtdOrdemCompraRequisicaoItensSA;
+        } else {
+            this._msnValidacao += this.montarMensagem('Lista Endereço dos itens vencidos',
+                'lstPProcessoOrdemCompraRequisicao', 'sCdComprador , sCdItemRequisicaoEmpresa , sCdRequisicaoEmpresa', null);
+        }
+    }
+    // Fim dos GETs e SETs
 
     carregarLstProcessoItemResultadoDTO(pProcessoItem) {
 
@@ -88,136 +310,26 @@ class PProcessoItemDTO extends UtilXMLParadigma {
         return lstEnderecoItemVencedor;
 
     }
-    //// retornarValor(item,"a:tDtFinalizacao",true);
-    get dtHomologacaoRatificacao() {
-        return this._dtHomologacaoRatificacao;
-    }
-    set dtHomologacaoRatificacao(dtHomologacaoRatificacao) {
-        if (dtHomologacaoRatificacao != null) {
-            this._dtHomologacaoRatificacao = dtHomologacaoRatificacao;
-        } else {
-            this._msnValidacao += this.montarMensagem('Data de Homologação do Item', 'lsPProcessoItemDTO', 'tDtFinalizacao', null);
+
+    retornarOTDOrdemCompraRequisicaoItensSA(pProcessoItem) {
+
+        for (let index = 0; index < lsPProcessoItemDTO.length; index++) {
+            let itemDTO = new PProcessoItemDTO(lsPProcessoItemDTO[index]);
+            this._lstPPRocessoItemDTO[index] = itemDTO;
         }
+
     }
 
-    // retornarValor(item,"a:tDtAdjudicacao",true);
-    get dtAdjudicacao() {
-        return this._dtAdjudicacao;
-    }
-    set dtAdjudicacao(dtAdjudicacao) {
-        if (dtAdjudicacao != null) {
-            this._dtAdjudicacao = dtAdjudicacao;
-        } else {
-            this._msnValidacao += this.montarMensagem('Data de Adjudicação do Item', 'lsPProcessoItemDTO', 'tDtAdjudicacao', null);
-        }
-    }
-
-    // retornarValor(item,"a:nCdLoteSequencial",true);
-    get cdLicitacaoLote() {
-        return this._cdLicitacaoLote;
-    }
-    set cdLicitacaoLote(cdLicitacaoLote) {
-        if (cdLicitacaoLote != null) {
-            this._cdLicitacaoLote = cdLicitacaoLote;
-        } else {
-            this._msnValidacao += this.montarMensagem('Código do Lote', 'lsPProcessoItemDTO', 'nCdLoteSequencial', null);
-        }
-    }
-
-    // retornarValor(item,"a:sCdProduto",true);
-    get cdMaterialServicoItem() {
-        return this._cdMaterialServicoItem;
-    }
-    set cdMaterialServicoItem(cdMaterialServicoItem) {
-        if (cdMaterialServicoItem != null) {
-            this._cdMaterialServicoItem = cdMaterialServicoItem;
-        } else {
-            this._msnValidacao += this.montarMensagem('Código do Item', 'lsPProcessoItemDTO', 'sCdProduto', null);
-        }
-    }
-
-    // retornarValor(item,"a:nCdItemSequencial",true);
-    get sqItemSolicitacaoCompra() {
-        return this._sqItemSolicitacaoCompra;
-    }
-    set sqItemSolicitacaoCompra(sqItemSolicitacaoCompra) {
-        if (sqItemSolicitacaoCompra != null) {
-            this._sqItemSolicitacaoCompra = sqItemSolicitacaoCompra;
-        } else {
-            this._msnValidacao += this.montarMensagem('Código sequencial do item', 'lsPProcessoItemDTO', 'nCdItemSequencial', null);
-        }
-    }
-
-    // retornarValor(item,"a:sDsItem",true);
-    get dsItem() {
-        return this._dsItem;
-    }
-    set dsItem(dsItem) {
-        if (dsItem != null) {
-            this._dsItem = dsItem;
-        } else {
-            //this._msnValidacao += this.montarMensagem('Código sequencial do item','lsPProcessoItemDTO','nCdItemSequencial',null);
-        }
-    }
-
-    // retornarValor(item,"a:sCdUnidadeMedida",true);
-    get cdUnidadeFornecimento() {
-        return this._cdUnidadeFornecimento;
-    }
-    set cdUnidadeFornecimento(cdUnidadeFornecimento) {
-        if (cdUnidadeFornecimento != null) {
-            this._cdUnidadeFornecimento = cdUnidadeFornecimento;
-        } else {
-            this._msnValidacao += this.montarMensagem('Unidade Fornecimento do item', 'lsPProcessoItemDTO', 'sCdUnidadeMedida', null);
-        }
-    }
-
-    //  retornarValor(item,"a:dVlReferencia",true);
-    get dVlReferencia() {
-        return this._dVlReferencia;
-    }
-    set dVlReferencia(dVlReferencia) {
-        if (dVlReferencia != null) {
-            this._dVlReferencia = dVlReferencia;
-        } else {
-            this._msnValidacao += this.montarMensagem('Valor de referencia do item', 'lsPProcessoItemDTO', 'dVlReferencia', null);
-        }
-    }
-
-    // retornarValor(item,"a:dQtItem",true);
-    get dQtItemItemSa() {
-        return this._dQtItemItemSa;
-    }
-    set dQtItemItemSa(dQtItemItemSa) {
-        if (dQtItemItemSa != null) {
-            this._dQtItemItemSa = dQtItemItemSa;
-        } else {
-            this._msnValidacao += this.montarMensagem('Quantidade do item', 'lsPProcessoItemDTO', 'dQtItem', null);
-        }
-    }
-
-    //resultadoVencedor
-    get resultadoVencedor() {
-        return this._resultadoVencedor;
-    }
-    set resultadoVencedor(resultadoVencedor) {
-        if (resultadoVencedor != null) {
-            this._resultadoVencedor = resultadoVencedor;
-        } else {
-            this._msnValidacao += this.montarMensagem('Resultado dos itens vencedor', 'lstPProcessoItemResultadoDTO', 'bFlVencedor', null);
-        }
-    }
-
-    //lstItemEnderecoEValorReferencia
-    get lstItemEnderecoEValorReferencia() {
-        return this._lstItemEnderecoEValorReferencia;
-    }
-    set lstItemEnderecoEValorReferencia(lstItemEnderecoEValorReferencia) {
-        if (lstItemEnderecoEValorReferencia != null) {
-            this._lstItemEnderecoEValorReferencia = lstItemEnderecoEValorReferencia;
-        } else {
-            this._msnValidacao += this.montarMensagem('Lista Endereço dos itens vencediso e valor de referência',
-                'lstPProcessoItemEnderecoRequisicao', 'sCdComprador , sCdItemRequisicaoEmpresa , sCdRequisicaoEmpresa', null);
+    retornarOTDOrdemCompraRequisicaoItensSA(pProcessoItemDTO) {
+    
+        let lstPProcessoOrdemCompraRequisicao   = pProcessoItemDTO.getElementsByTagName("lstPProcessoOrdemCompraRequisicao");
+       
+        for (let index = 0; index < lstPProcessoOrdemCompraRequisicao.length; index++) {
+            var lsRequisicaoDTO             =   lstPProcessoOrdemCompraRequisicao[index].getElementsByTagName("a:PProcessoOrdemCompraRequisicaoDTO");
+            this.sCdComprador               =   this.retornarValor(lsRequisicaoDTO[index], "a:sCdComprador", true);
+            this.sCdItemRequisicaoEmpresa   =   this.retornarValor(lsRequisicaoDTO[index], "a:sCdItemRequisicaoEmpresa", true);
+            this.sCdRequisicaoEmpresa       =   this.retornarValor(lsRequisicaoDTO[index], "a:sCdRequisicaoEmpresa", true);
+            //this._lstOtdOrdemCompraRequisicaoItensSA[index] =  'sCdComprador: '+ cdComprador +' sCdItemRequisicaoEmpresa: '+ cdItemRequisicaoEmpresa +' sCdRequisicaoEmpresa: '+ cdItemRequisicaoEmpresa;
         }
     }
 }
