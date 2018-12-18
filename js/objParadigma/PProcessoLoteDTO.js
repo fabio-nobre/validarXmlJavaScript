@@ -2,111 +2,118 @@ class PProcessoLoteDTO extends UtilXMLParadigma {
     constructor(lsPProcessoLoteDTO) {
 
         super();
-        this._cdLicitacaoLote;
-        this._dsLicitacaoLote;
-        this._sqApresentacaoLicitacaoLote;
-        this._tDtAdjudicacao;
-        this._tDHomologacao;
-        this._lstResultadoDoLote = [];
+        this._dVlLance;
+        this._nCdLote;
+        this._nCdLoteSequencial;
+        this._nStLote;
+        this._sCdFornecedor;
+        this._sDsLote;
+        this._tDtEncerramento;
+        this._tDtFinalizado;
+
         this.carregarPProcessoLote(lsPProcessoLoteDTO);
-        this.carregarPProcessoLoteResultado(lsPProcessoLoteDTO);
     }
 
     carregarPProcessoLote(lsPProcessoLoteDTO) {
 
-        let item = lsPProcessoLoteDTO;
+        let lote = lsPProcessoLoteDTO;
 
-        this.cdLicitacaoLote = this.retornarValor(item, "a:nCdLoteSequencial", true);
-        this.dsLicitacaoLote = this.retornarValor(item, "a:sDsLote", true);
-        this.sqApresentacaoLicitacaoLote = this.retornarValor(item, "a:nCdLoteSequencial", true); // verificar como esta isso na tabela
-        this.tDtAdjudicacao = this.retornarValor(item, "a:tDtAdjudicacao", true);
-        this.tDHomologacao = this.retornarValor(item, "a:tDtFinalizacao", true);
-
-    }
-
-    carregarPProcessoLoteResultado(lsPProcessoLoteDTO) {
-
-        const lstPProcessoLoteResultado = lsPProcessoLoteDTO.getElementsByTagName("a:lstPProcessoLoteResultado");
-        const pProcessoLoteResultadoDTO = lstPProcessoLoteResultado[0].getElementsByTagName("a:PProcessoLoteResultadoDTO");
-        let x = 0;
-        for (let index = 0; index < pProcessoLoteResultadoDTO.length; index++) {
-
-            let bFlVencedor = this.retornarValor(pProcessoLoteResultadoDTO[index], "a:bFlVencedor", true);
-
-            if (bFlVencedor == 1) {
-
-                let resultado = new PProcessoLoteResultadoDTO(pProcessoLoteResultadoDTO[index]);
-                this._lstResultadoDoLote[x] = resultado;
-                x++;
-
-            }
-        }
+        this.dVlLance          = this.retornarValor(lote, "a:dVlLance", true);
+        this.nCdLote           = this.retornarValor(lote, "a:nCdLote", true);
+        this.nCdLoteSequencial = this.retornarValor(lote, "a:nCdLoteSequencial", true); 
+        this.nStLote           = this.retornarValor(lote, "a:nStLote", true);
+        this.sCdFornecedor     = this.retornarValor(lote, "a:sCdFornecedor", true);
+        this.sDsLote           = this.retornarValor(lote, "a:sDsLote", true);
+        this.tDtEncerramento   = this.retornarValor(lote, "a:tDtEncerramento", true);
+        this.tDtFinalizado     = this.retornarValor(lote, "a:tDtFinalizado", true);
 
     }
 
-    get lstResultadoDoLote() {
-        return this._lstResultadoDoLote;
+    get dVlLance() {
+        return this._dVlLance;
     }
-    set lstResultadoDoLote(lstResultadoDoLote) {
-        if (lstResultadoDoLote != null) {
-            this._lstResultadoDoLote = lstResultadoDoLote;
+    set dVlLance(dVlLance) {
+        if (dVlLance != null) {
+            this._dVlLance = dVlLance;
         } else {
-            this._msnValidacao += this.montarMensagem('Lista com resultado do Lote', 'lsPProcessoLoteDTO', 'PProcessoLoteResultadoDTO', null);
+            this._msnValidacao += this.montarMensagem('Valor do lance', 'lsPProcessoLoteDTO', 'dVlLance', null);
         }
     }
 
-    get tDHomologacao() {
-        return this._tDHomologacao;
+    get nCdLote() {
+        return this._nCdLote;
     }
-    set tDHomologacao(tDHomologacao) {
-        if (tDHomologacao != null) {
-            this._tDHomologacao = tDHomologacao;
+    set nCdLote(nCdLote) {
+        if (nCdLote != null) {
+            this._nCdLote = nCdLote;
         } else {
-            this._msnValidacao += this.montarMensagem('Data de Homologacao do Lote', 'lsPProcessoLoteDTO', 'tDtFinalizacao', null);
+            this._msnValidacao += this.montarMensagem('Código do lote', 'lsPProcessoLoteDTO', 'nCdLote', null);
         }
     }
 
-    get tDtAdjudicacao() {
-        return this._tDtAdjudicacao;
+    get nCdLoteSequencial() {
+        return this._nCdLoteSequencial;
     }
-    set tDtAdjudicacao(tDtAdjudicacao) {
-        if (tDtAdjudicacao != null) {
-            this._tDtAdjudicacao = tDtAdjudicacao;
+    set nCdLoteSequencial(nCdLoteSequencial) {
+        if (nCdLoteSequencial != null) {
+            this._nCdLoteSequencial = nCdLoteSequencial;
         } else {
-            this._msnValidacao += this.montarMensagem('Data de Adjudicação do Lote', 'lsPProcessoLoteDTO', 'tDtAdjudicacao', null);
+            this._msnValidacao += this.montarMensagem('Sequencial do lote', 'lsPProcessoLoteDTO', 'nCdLoteSequencial', null);
         }
     }
 
-    get sqApresentacaoLicitacaoLote() {
-        return this._sqApresentacaoLicitacaoLote;
+    get nStLote() {
+        return this._nStLote;
     }
-    set sqApresentacaoLicitacaoLote(sqApresentacaoLicitacaoLote) {
-        if (sqApresentacaoLicitacaoLote != null) {
-            this._sqApresentacaoLicitacaoLote = sqApresentacaoLicitacaoLote;
+    set nStLote(nStLote) {
+        if (nStLote != null) {
+            this._nStLote = nStLote;
         } else {
-            this._msnValidacao += this.montarMensagem('Código sequencial do Lote', 'lsPProcessoLoteDTO', 'nCdLoteSequencial', null);
+            this._msnValidacao += this.montarMensagem('ST do lote', 'lsPProcessoLoteDTO', 'nStLote', null);
         }
     }
 
-    get dsLicitacaoLote() {
-        return this._dsLicitacaoLote;
+    get sCdFornecedor() {
+        return this._sCdFornecedor;
     }
-    set dsLicitacaoLote(dsLicitacaoLote) {
-        if (dsLicitacaoLote != null) {
-            this._dsLicitacaoLote = dsLicitacaoLote;
+    set sCdFornecedor(sCdFornecedor) {
+        if (sCdFornecedor != null) {
+            this._sCdFornecedor = sCdFornecedor;
         } else {
-            this._msnValidacao += this.montarMensagem('Descrição do Lote', 'lsPProcessoLoteDTO', 'sDsLote', null);
+            this._msnValidacao += this.montarMensagem('Código do Fornecedor', 'lsPProcessoLoteDTO', 'sCdFornecedor', null);
         }
     }
 
-    get cdLicitacaoLote() {
-        return this._cdLicitacaoLote;
+    get sDsLote() {
+        return this._sDsLote;
     }
-    set cdLicitacaoLote(cdLicitacaoLote) {
-        if (cdLicitacaoLote != null) {
-            this._cdLicitacaoLote = cdLicitacaoLote;
+    set sDsLote(sDsLote) {
+        if (sDsLote != null) {
+            this._sDsLote = sDsLote;
         } else {
-            this._msnValidacao += this.montarMensagem('Código do Lote', 'lsPProcessoLoteDTO', 'nCdLoteSequencial', null);
+            this._msnValidacao += this.montarMensagem('Descrição do Lote', 'lsPProcessoLoteDTO', 'sCdFornecedor', null);
+        }
+    }
+
+    get tDtEncerramento() {
+        return this._tDtEncerramento;
+    }
+    set tDtEncerramento(tDtEncerramento) {
+        if (tDtEncerramento != null) {
+            this._tDtEncerramento = tDtEncerramento;
+        } else {
+            this._msnValidacao += this.montarMensagem('Data de encerramento', 'lsPProcessoLoteDTO', 'tDtEncerramento', null);
+        }
+    }
+
+    get tDtFinalizado() {
+        return this._tDtFinalizado;
+    }
+    set tDtFinalizado(tDtFinalizado) {
+        if (tDtFinalizado != null) {
+            this._tDtFinalizado = tDtFinalizado;
+        } else {
+            this._msnValidacao += this.montarMensagem('Data Finalizado', 'lsPProcessoLoteDTO', 'tDtFinalizado', null);
         }
     }
 }

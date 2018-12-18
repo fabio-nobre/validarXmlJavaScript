@@ -142,6 +142,17 @@ class OTDProcessoResultadoDTO extends UtilXMLParadigma {
         }
 
     }
+    // Recuperando as informações referente aos lotes - PProcessoResultadoParcialDTO > lstPProcessoLote
+    carregarLstPProcessoLote() {
+
+        var lstPProcessoLote = this._pProcessoResultadoParcialDTO[0].getElementsByTagName("a:lstPProcessoLote");
+        var lsPProcessoLoteDTO = lstPProcessoLote[0].getElementsByTagName("a:PProcessoLoteNegociacaoDTO");
+
+        for (let index = 0; index < lsPProcessoLoteDTO.length; index++) {
+            let lote = new PProcessoLoteDTO(lsPProcessoLoteDTO[index])
+            this._lstPPRocessoLote[index] = lote;
+        }
+    }
 
     
     // Métodos GETs e SETs  
@@ -371,27 +382,8 @@ class OTDProcessoResultadoDTO extends UtilXMLParadigma {
         // mensagem do lote
         this._lstPPRocessoLote.forEach(function(lote){
             msn += lote.msnValidacao;
-
-            //mensagem do resultado do lote
-            lote._lstResultadoDoLote.forEach(function(resultado){
-                msn += resultado.msnValidacao;
-            });
         });
 
         return msn;
     }
-
-    carregarLstPProcessoLote() {
-
-        var lstPProcessoLote = this._pProcessoResultadoParcialDTO[0].getElementsByTagName("a:lstPProcessoLote");
-        var lsPProcessoLoteDTO = lstPProcessoLote[0].getElementsByTagName("a:PProcessoLoteNegociacaoDTO");
-
-        for (let index = 0; index < lsPProcessoLoteDTO.length; index++) {
-            let lote = new PProcessoLoteDTO(lsPProcessoLoteDTO[index])
-            this._lstPPRocessoLote[index] = lote;
-        }
-    }
-
-
-
 }

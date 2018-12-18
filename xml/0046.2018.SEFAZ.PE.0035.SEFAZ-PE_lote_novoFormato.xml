@@ -94,7 +94,7 @@
                      <a:nCdLoteSequencial>1</a:nCdLoteSequencial>
                      <a:nStLote>7</a:nStLote>
                      <a:sCdFornecedor>0000617382</a:sCdFornecedor>
-                     <a:sDsLote>LOTE A</a:sDsLote>
+                     <a:sDsLote></a:sDsLote>
                      <a:tDtEncerramento>2018-12-11T14:53:16.107</a:tDtEncerramento>
                      <a:tDtFinalizado>2018-12-11T15:03:56.72</a:tDtFinalizado>
                   </a:PProcessoLoteNegociacaoDTO>
@@ -103,7 +103,7 @@
                      <a:nCdLote>277</a:nCdLote>
                      <a:nCdLoteSequencial>2</a:nCdLoteSequencial>
                      <a:nStLote>7</a:nStLote>
-                     <a:sCdFornecedor>0000617382</a:sCdFornecedor>
+                     <a:sCdFornecedor></a:sCdFornecedor>
                      <a:sDsLote>LOTE B</a:sDsLote>
                      <a:tDtEncerramento>2018-12-11T14:53:16.857</a:tDtEncerramento>
                      <a:tDtFinalizado>2018-12-11T15:03:56.72</a:tDtFinalizado>
