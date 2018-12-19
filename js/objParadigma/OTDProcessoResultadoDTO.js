@@ -33,7 +33,10 @@ class OTDProcessoResultadoDTO extends UtilXMLParadigma {
         this.carregarDadosBasicosResultadoDTO();
         this.carregarlstPPProcessoOrdemCompra();
         this.carregarlstProcessoItemDTO();
-        this.carregarLstPProcessoLote(); 
+
+        if(this._idTipoApuracaoLicitacao != "1"){
+            this.carregarLstPProcessoLote(); 
+        }
 
     }
 
@@ -118,11 +121,11 @@ class OTDProcessoResultadoDTO extends UtilXMLParadigma {
 
         // lstPPProcessoOrdemCompra > PProcessoOrdemCompraDTO
         let lstPPProcessoOrdemCompra = this._pProcessoResultadoParcialDTO[0].getElementsByTagName("a:lstPPProcessoOrdemCompra");
-        let lsPProcessoOrdemCompraDTO = lstPPProcessoOrdemCompra[0].getElementsByTagName("PProcessoOrdemCompraDTO");
+        let pProcessoOrdemCompraNegociacaoDTO = lstPPProcessoOrdemCompra[0].getElementsByTagName("a:PProcessoOrdemCompraNegociacaoDTO");
 
-        for (let index = 0; index < lsPProcessoOrdemCompraDTO.length; index++) {
+        for (let index = 0; index < pProcessoOrdemCompraNegociacaoDTO.length; index++) {
 
-            let ordemCompra = new PProcessoOrdemCompraDTO(lsPProcessoOrdemCompraDTO[index], this.cdUnidadeGestora);
+            let ordemCompra = new PProcessoOrdemCompraDTO(pProcessoOrdemCompraNegociacaoDTO[index], this.cdCompradorLicitacao);
             this._lstPPRocessoOrdemCompraDTO[index] = ordemCompra;
 
         }
@@ -131,13 +134,15 @@ class OTDProcessoResultadoDTO extends UtilXMLParadigma {
     // Recuperando as informações referente aos itens - PProcessoResultadoParcialDTO > lstPProcessoItem
     carregarlstProcessoItemDTO() {
 
+        let tipoLicitacao  = this._idTipoApuracaoLicitacao;
+
         // lstPProcessoItem > PProcessoItemDTO
         const lstPProcessoItem = this._pProcessoResultadoParcialDTO[0].getElementsByTagName("a:lstPProcessoItem");
-        const lsPProcessoItemDTO = lstPProcessoItem[0].getElementsByTagName("PProcessoItemDTO");
+        const pProcessoItemNegociacaoDTO = lstPProcessoItem[0].getElementsByTagName("a:PProcessoItemNegociacaoDTO");
 
-        for (let index = 0; index < lsPProcessoItemDTO.length; index++) {
+        for (let index = 0; index < pProcessoItemNegociacaoDTO.length; index++) {
 
-            let itemDTO = new PProcessoItemDTO(lsPProcessoItemDTO[index]);
+            let itemDTO = new PProcessoItemDTO(pProcessoItemNegociacaoDTO[index], tipoLicitacao);
             this._lstPPRocessoItemDTO[index] = itemDTO;
         }
 
@@ -167,13 +172,27 @@ class OTDProcessoResultadoDTO extends UtilXMLParadigma {
         } else {
 
             let dados ={
+                msg: 'Quantidade de Fornecedores convidados',
+                severidade: 1,
+                tag: 'dQtFornecedoresConvidados',
+                obj:this
+                };
+
+            var dado = new TratamentoDados(dados);
+            dado.msg = 'Quantidade de Fornecedores convidados';
+            dado.severidade = 2;
+            dado.tag = 'dQtFornecedoresConvidados';
+            dado.objeto = this;
+            dado.carregar();
+ 
+/*            let dados ={
                   msg: 'Quantidade de Fornecedores convidados',
                   severidade: 2,
                   tag: 'dQtFornecedoresConvidados',
                   obj:this
                 };
 
-            this.verificarPrioridadeDaInformacao(dados);
+            this.verificarPrioridadeDaInformacao(dados); */
             //this.msnValidacao += this.montarMensagem('Quantidade de Fornecedores convidados', null, 'dQtFornecedoresConvidados', null);
         }
     }

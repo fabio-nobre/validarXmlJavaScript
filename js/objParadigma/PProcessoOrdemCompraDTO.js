@@ -1,5 +1,5 @@
 class PProcessoOrdemCompraDTO extends UtilXMLParadigma {
-    constructor(pProcessoOrdemCompraDTO, cdUGResponsavelLicitacao) {
+    constructor(pProcessoOrdemCompraNegociacaoDTO, cdUGResponsavelLicitacao) {
 
         super();
         this._cdSolicitacaoCompraPeIntegrado;
@@ -11,7 +11,7 @@ class PProcessoOrdemCompraDTO extends UtilXMLParadigma {
         this._lstOtdItensSA = [];
         this._dQtItem;
         
-        this.carregarDadosBasicosSA(pProcessoOrdemCompraDTO, cdUGResponsavelLicitacao);
+        this.carregarDadosBasicosSA(pProcessoOrdemCompraNegociacaoDTO, cdUGResponsavelLicitacao);
 
         this.toString();
 
@@ -32,38 +32,41 @@ class PProcessoOrdemCompraDTO extends UtilXMLParadigma {
         return sa + this._lstOtdItensSA;
     }
     
-    // Recuperando as informações basicas Ordem de Compra - PProcessoOrdemCompraDTO
-    carregarDadosBasicosSA(pProcessoOrdemCompraDTO, cdUGResponsavelLicitacao) {
+    // Recuperando as informações basicas Ordem de Compra - pProcessoOrdemCompraNegociacaoDTO
+    carregarDadosBasicosSA(pProcessoOrdemCompraNegociacaoDTO, cdUGResponsavelLicitacao) {
     
-        this.cdSolicitacaoCompraPeIntegrado = this.retornarValor(pProcessoOrdemCompraDTO, "sCdOrdemCompraEmpresa", true);
-        //this.cdUGResponsavelLicitacao       = cdUGResponsavelLicitacao;
-        this.cdUnidadeGestoraGestao         = this.retornarValor(pProcessoOrdemCompraDTO, "sCdGestao", true);
-        this.cdUnidadeGestora               = this.retornarValor(pProcessoOrdemCompraDTO, "sCdComprador", true);
-        this.dsResumidaSolicitacaoCompra    = this.retornarValor(pProcessoOrdemCompraDTO, "sDsOrdemCompra", true);
-        this.nuAnoSolicitacaoCompra         = this.retornarValor(pProcessoOrdemCompraDTO, "tDtEmissao", true);
+        this.cdSolicitacaoCompraPeIntegrado = this.retornarValor(pProcessoOrdemCompraNegociacaoDTO, "a:sCdOrdemCompraEmpresa", true);
+        this.cdUGResponsavelLicitacao       = cdUGResponsavelLicitacao;
+        this.cdUnidadeGestoraGestao         = this.retornarValor(pProcessoOrdemCompraNegociacaoDTO, "a:sCdGestao", true);
+        this.cdUnidadeGestora               = this.retornarValor(pProcessoOrdemCompraNegociacaoDTO, "a:sCdComprador", true);
+        this.dsResumidaSolicitacaoCompra    = this.retornarValor(pProcessoOrdemCompraNegociacaoDTO, "a:sDsOrdemCompra", true);
+        this.nuAnoSolicitacaoCompra         = this.retornarValor(pProcessoOrdemCompraNegociacaoDTO, "a:tDtEmissao", true);
         
-        this.retornarOTDItensSA(pProcessoOrdemCompraDTO);
+        this.retornarOTDItensSA(pProcessoOrdemCompraNegociacaoDTO);
 
     }
     
     // retorna o endereço dos itens na sa
-    retornarOTDItensSA(pProcessoOrdemCompraDTO) {
+    retornarOTDItensSA(pProcessoOrdemCompraNegociacaoDTO) {
     
-        let lstPProcessoOrdemCompraRequisicao   = pProcessoOrdemCompraDTO.getElementsByTagName("lstPProcessoOrdemCompraRequisicao");
+        let lstPProcessoOrdemCompraRequisicao   = pProcessoOrdemCompraNegociacaoDTO.getElementsByTagName("a:lstPProcessoOrdemCompraRequisicao");
        
         for (let index = 0; index < lstPProcessoOrdemCompraRequisicao.length; index++) {
     
-            var lsRequisicaoDTO                 = lstPProcessoOrdemCompraRequisicao[index].getElementsByTagName("PProcessoOrdemCompraRequisicaoDTO");
+            var pProcessoOrdemCompraRequisicaoNegociacaoDTO = lstPProcessoOrdemCompraRequisicao[index].getElementsByTagName("a:PProcessoOrdemCompraRequisicaoNegociacaoDTO");
     
-            let dQtItem                     = this.retornarValor(lsRequisicaoDTO[index], "dQtItem", true);
-            let dVlReferencia               = this.retornarValor(lsRequisicaoDTO[index], "dVlReferencia", true);
-            let sCdItemRequisicaoEmpresa    = this.retornarValor(lsRequisicaoDTO[index], "sCdItemRequisicaoEmpresa", true);
-            let sCdProduto                  = this.retornarValor(lsRequisicaoDTO[index], "sCdProduto", true);
-            let sCdRequisicaoEmpresa        = this.retornarValor(lsRequisicaoDTO[index], "sCdRequisicaoEmpresa", true);
-            let sCdUnidadeMedida            = this.retornarValor(lsRequisicaoDTO[index], "sCdUnidadeMedida", true);
+            for (let i = 0; i < pProcessoOrdemCompraRequisicaoNegociacaoDTO.length; i++ ){
 
-            this._lstOtdItensSA[index] =  'dQtItem: '+ dQtItem +' dVlReferencia: '+dVlReferencia+' sCdItemRequisicaoEmpresa: '+sCdItemRequisicaoEmpresa
-                                          +' sCdProduto: '+sCdProduto+' sCdRequisicaoEmpresa: '+sCdRequisicaoEmpresa+' sCdUnidadeMedida: '+sCdUnidadeMedida;
+                let dQtItem                     = this.retornarValor(pProcessoOrdemCompraRequisicaoNegociacaoDTO[i], "a:dQtItem", true);
+                let dVlReferencia               = this.retornarValor(pProcessoOrdemCompraRequisicaoNegociacaoDTO[i], "a:dVlReferencia", true);
+                let sCdItemRequisicaoEmpresa    = this.retornarValor(pProcessoOrdemCompraRequisicaoNegociacaoDTO[i], "a:sCdItemRequisicaoEmpresa", true);
+                let sCdProduto                  = this.retornarValor(pProcessoOrdemCompraRequisicaoNegociacaoDTO[i], "a:sCdProduto", true);
+                let sCdRequisicaoEmpresa        = this.retornarValor(pProcessoOrdemCompraRequisicaoNegociacaoDTO[i], "a:sCdRequisicaoEmpresa", true);
+                let sCdUnidadeMedida            = this.retornarValor(pProcessoOrdemCompraRequisicaoNegociacaoDTO[i], "a:sCdUnidadeMedida", true);
+                
+                this._lstOtdItensSA[i] =  'dQtItem: '+ dQtItem +' dVlReferencia: '+dVlReferencia+' sCdItemRequisicaoEmpresa: '+sCdItemRequisicaoEmpresa
+                +' sCdProduto: '+sCdProduto+' sCdRequisicaoEmpresa: '+sCdRequisicaoEmpresa+' sCdUnidadeMedida: '+sCdUnidadeMedida;
+            }
         }
     }
 

@@ -1,6 +1,6 @@
 class PProcessoItemDTO extends UtilXMLParadigma {
 
-    constructor(pProcessoItem) {
+    constructor(pProcessoItem, ptipoLicitacao) {
 
         super();
 
@@ -18,37 +18,39 @@ class PProcessoItemDTO extends UtilXMLParadigma {
         this._tDtEncerramentoSa;
         this._tDtFinalizadoSa;
         this._tDtRevogadoSa;
+        this._sCdItemRequisicaoEmpresa;
         
         this._lstItemResultadoDTO = [];
         this._lstItemEnderecoEValorReferencia = [];
-        this.carregarDadosItem(pProcessoItem);
+        this._lstOtdOrdemCompraRequisicaoItensSA = [];
+        this.carregarDadosItem(pProcessoItem, ptipoLicitacao);
 
     }
 
-    carregarDadosItem(pProcessoItem) {
+    carregarDadosItem(pProcessoItem, ptipoLicitacao) {
 
         let item = pProcessoItem;
 
-        this.dQtItemItemSa          =   this.retornarValor(item, "dQtItem", true);
-        this.dQtParticipanteItemSa  =   this.retornarValor(item, "dQtParticipanteItem", true);
-        this.dVlLanceSa             =   this.retornarValor(item, "dVlLance", true);
-        this.dVlReferenciaSa        =   this.retornarValor(item, "dVlReferencia", true);
-        this.nCdItemSequencialSa    =   this.retornarValor(item, "nCdItemSequencial", true);
-        this.nCdLoteSequencialSa    =   this.retornarValor(item, "nCdLoteSequencial", true);
-        this.nCdMarcaSa             =   this.retornarValor(item, "nCdMarca", true);
-        this.nStSituacaoSa          =   this.retornarValor(item, "nStSituacao", true);
-        this.sCdFornecedorSa        =   this.retornarValor(item, "sCdFornecedor", true);
-        this.sDsMarcaSa             =   this.retornarValor(item, "sDsMarca", true);
-        this.sNrProtocoloSa         =   this.retornarValor(item, "sNrProtocolo", true);
-        this.tDtEncerramentoSa      =   this.retornarValor(item, "tDtEncerramento", true);
-        this.tDtFinalizadoSa        =   this.retornarValor(item, "tDtFinalizado", true);
-        this.tDtRevogadoSa          =   this.retornarValor(item, "tDtRevogado", true);
+        this.dQtItemItemSa          =   this.retornarValor(item, "a:dQtItem", true);
+        this.dQtParticipanteItemSa  =   this.retornarValor(item, "a:dQtParticipanteItem", true);
+        this.dVlLanceSa             =   this.retornarValor(item, "a:dVlLance", true);
+        this.dVlReferenciaSa        =   this.retornarValor(item, "a:dVlReferencia", true);
+        this.nCdItemSequencialSa    =   this.retornarValor(item, "a:nCdItemSequencial", true);
+
+        if(ptipoLicitacao != "1"){
+            this.nCdLoteSequencialSa    =   this.retornarValor(item, "a:nCdLoteSequencial", true);
+        }
+        
+        this.nCdMarcaSa             =   this.retornarValor(item, "a:nCdMarca", true);
+        this.nStSituacaoSa          =   this.retornarValor(item, "a:nStSituacao", true);
+        this.sCdFornecedorSa        =   this.retornarValor(item, "a:sCdFornecedor", true);
+        this.sDsMarcaSa             =   this.retornarValor(item, "a:sDsMarca", true);
+        this.sNrProtocoloSa         =   this.retornarValor(item, "a:sNrProtocolo", true);
+        this.tDtEncerramentoSa      =   this.retornarValor(item, "a:tDtEncerramento", true);
+        this.tDtFinalizadoSa        =   this.retornarValor(item, "a:tDtFinalizado", true);
+        this.tDtRevogadoSa          =   this.retornarValor(item, "a:tDtRevogado", true);
     
         this.retornarOTDOrdemCompraRequisicaoItensSA(pProcessoItem);
-        this._lstOtdOrdemCompraRequisicaoItensSA = [];
-
-        
-       // this.carregarLstProcessoOrdemCompraRequisicao(pProcessoItem);
 
        /* 
         this.lstItemEnderecoEValorReferencia = this.enderecoItensSAVencedorValorReferencia(item);
@@ -243,7 +245,7 @@ class PProcessoItemDTO extends UtilXMLParadigma {
         if (sCdRequisicaoEmpresa != null) {
             this._sCdRequisicaoEmpresa = sCdRequisicaoEmpresa;
         } else {
-            this._msnValidacao += this.montarMensagem('Código requisicao empresa item', 'lstPProcessoOrdemCompraRequisicao', 'sCdRequisicaoEmpresa', null);
+            this._msnValidacao += this.montarMensagem('Código requisicao empresa', 'lstPProcessoOrdemCompraRequisicao', 'sCdRequisicaoEmpresa', null);
         }
     }
 
@@ -260,7 +262,7 @@ class PProcessoItemDTO extends UtilXMLParadigma {
     }
     // Fim dos GETs e SETs
 
-    carregarLstProcessoItemResultadoDTO(pProcessoItem) {
+/*     carregarLstProcessoItemResultadoDTO(pProcessoItem) {
 
         const lstPProcessoItemResultado = pProcessoItem.getElementsByTagName("a:lstPProcessoItemResultado");
         const lstPProcessoItemResultadoDTO = lstPProcessoItemResultado[0].getElementsByTagName("a:PProcessoItemResultadoDTO");
@@ -309,27 +311,27 @@ class PProcessoItemDTO extends UtilXMLParadigma {
 
         return lstEnderecoItemVencedor;
 
-    }
+    } 
 
-    retornarOTDOrdemCompraRequisicaoItensSA(pProcessoItem) {
+     retornarOTDOrdemCompraRequisicaoItensSA(pProcessoItem) {
 
         for (let index = 0; index < lsPProcessoItemDTO.length; index++) {
             let itemDTO = new PProcessoItemDTO(lsPProcessoItemDTO[index]);
             this._lstPPRocessoItemDTO[index] = itemDTO;
         }
 
-    }
+    } */
 
     retornarOTDOrdemCompraRequisicaoItensSA(pProcessoItemDTO) {
     
-        let lstPProcessoOrdemCompraRequisicao   = pProcessoItemDTO.getElementsByTagName("lstPProcessoOrdemCompraRequisicao");
+        let lstPProcessoOrdemCompraRequisicao   = pProcessoItemDTO.getElementsByTagName("a:lstPProcessoOrdemCompraRequisicao");
        
         for (let index = 0; index < lstPProcessoOrdemCompraRequisicao.length; index++) {
             var lsRequisicaoDTO             =   lstPProcessoOrdemCompraRequisicao[index].getElementsByTagName("a:PProcessoOrdemCompraRequisicaoDTO");
             this.sCdComprador               =   this.retornarValor(lsRequisicaoDTO[index], "a:sCdComprador", true);
             this.sCdItemRequisicaoEmpresa   =   this.retornarValor(lsRequisicaoDTO[index], "a:sCdItemRequisicaoEmpresa", true);
             this.sCdRequisicaoEmpresa       =   this.retornarValor(lsRequisicaoDTO[index], "a:sCdRequisicaoEmpresa", true);
-            //this._lstOtdOrdemCompraRequisicaoItensSA[index] =  'sCdComprador: '+ cdComprador +' sCdItemRequisicaoEmpresa: '+ cdItemRequisicaoEmpresa +' sCdRequisicaoEmpresa: '+ cdItemRequisicaoEmpresa;
+            this._lstOtdOrdemCompraRequisicaoItensSA[index] =  'sCdComprador: '+  this.sCdComprador +' sCdItemRequisicaoEmpresa: '+ this.sCdItemRequisicaoEmpresa +' sCdRequisicaoEmpresa: '+ this.sCdRequisicaoEmpresa;
         }
     }
 }

@@ -1,9 +1,9 @@
-<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+﻿<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
    <s:Body>
       <RetornarPProcessoResultadoNegociacaoResponse xmlns="http://tempuri.org/">
          <RetornarPProcessoResultadoNegociacaoResult xmlns:a="http://schemas.datacontract.org/2004/07/Paradigma.Wbc.Servico.DTO" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
             <a:PProcessoResultadoParcialDTO>
-               <a:dQtFornecedoresConvidados>859</a:dQtFornecedoresConvidados>
+               <a:dQtFornecedoresConvidados></a:dQtFornecedoresConvidados>
                <a:dQtFornecedoresHabilitados>1</a:dQtFornecedoresHabilitados>
                <a:dQtFornecedoresParticipantes>3</a:dQtFornecedoresParticipantes>
                <a:lstPPProcessoOrdemCompra>
@@ -57,7 +57,7 @@
                      <a:nCdMarca>1</a:nCdMarca>
                      <a:nStSituacao>7</a:nStSituacao>
                      <a:sCdFornecedor>0000617382</a:sCdFornecedor>
-                     <a:sDsMarca>NENHUMA MARCA REGISTRADA</a:sDsMarca>
+                     <a:sDsMarca></a:sDsMarca>
                      <a:sNrProtocolo i:nil="true"/>
                      <a:tDtEncerramento i:nil="true"/>
                      <a:tDtFinalizado>2018-12-11T15:03:56.72</a:tDtFinalizado>
@@ -94,7 +94,7 @@
                      <a:nCdLoteSequencial>1</a:nCdLoteSequencial>
                      <a:nStLote>7</a:nStLote>
                      <a:sCdFornecedor>0000617382</a:sCdFornecedor>
-                     <a:sDsLote></a:sDsLote>
+                     <a:sDsLote>LOte A</a:sDsLote>
                      <a:tDtEncerramento>2018-12-11T14:53:16.107</a:tDtEncerramento>
                      <a:tDtFinalizado>2018-12-11T15:03:56.72</a:tDtFinalizado>
                   </a:PProcessoLoteNegociacaoDTO>
@@ -103,7 +103,7 @@
                      <a:nCdLote>277</a:nCdLote>
                      <a:nCdLoteSequencial>2</a:nCdLoteSequencial>
                      <a:nStLote>7</a:nStLote>
-                     <a:sCdFornecedor></a:sCdFornecedor>
+                     <a:sCdFornecedor>0000617382</a:sCdFornecedor>
                      <a:sDsLote>LOTE B</a:sDsLote>
                      <a:tDtEncerramento>2018-12-11T14:53:16.857</a:tDtEncerramento>
                      <a:tDtFinalizado>2018-12-11T15:03:56.72</a:tDtFinalizado>

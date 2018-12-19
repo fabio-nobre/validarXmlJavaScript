@@ -91,7 +91,7 @@ class PProcessoLoteDTO extends UtilXMLParadigma {
         if (sDsLote != null) {
             this._sDsLote = sDsLote;
         } else {
-            this._msnValidacao += this.montarMensagem('Descrição do Lote', 'lsPProcessoLoteDTO', 'sCdFornecedor', null);
+            this._msnValidacao += this.montarMensagem('Descrição do Lote', 'lsPProcessoLoteDTO', 'sDsLote', null);
         }
     }
 
