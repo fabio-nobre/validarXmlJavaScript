@@ -2,7 +2,7 @@ class UtilXMLParadigma {
     constructor() {
         this._msnValidacao = "";
     }
-
+    
 
     /*verifica se uma tag contem valor no nó de text
     xmlObjeto       - fragmento xml de onde vai se extrair o valor de uma tag 
@@ -68,6 +68,7 @@ class UtilXMLParadigma {
     set msnValidacao(msn) {
         this._msnValidacao = msn;
     }
+    
 
     montarMensagem(descValidacao, listaXml, tagXml, txtComplemento) {
 

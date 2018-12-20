@@ -1,7 +1,7 @@
-class TratamentoDados extends UtilXMLParadigma {
-    constructor(pDados) {
+class TratamentoDados extends UtilXMLParadigma{
+    constructor(pDetalhesAtributo) {
 
-        super();
+       super();
         this._msg;
         this._severidade;
         this._tag;
@@ -10,13 +10,44 @@ class TratamentoDados extends UtilXMLParadigma {
         this._lsInformativa = [];
         
         //this.carregar();
-        //this.carregarTratamentoDados(pDados);
+        this.carregarTratamentoDados(pDetalhesAtributo);
     }
 
-    carregarTratamentoDados(pDados) {   
+    carregarTratamentoDados(pDetalhesAtributo) {   
+
         
         
-        for (var campo in pDados) {
+        /* console.log(produtos.filter(function(p) {
+            return false
+        })) */
+        
+        
+        const impeditivo = dadoImp => dadoImp.severidade == '1'
+        this.lsImpeditiva = pDetalhesAtributo.filter(impeditivo);
+        console.log(this.lsImpeditiva)
+        
+        
+        const informativa = dadoInf => dadoInf.severidade == '2'
+        this.lsInformativa = pDetalhesAtributo.filter(informativa);
+        console.log(this.lsInformativa)
+        
+        if(this.lsImpeditiva.length != 0){
+            return this.lsImpeditiva;
+        } else if(this.lsInformativa.length != 0){
+            return this.lsInformativa;
+        }
+ 
+
+        /* console.log(pDetalhesAtributo.filter(impeditivo))
+        if(pDetalhesAtributo.filter(impeditivo) > 0){
+            this.lsImpeditiva = pDetalhesAtributo;
+        } else {
+            this.lsInformativa = pDetalhesAtributo;
+
+        } */
+        
+        
+/*         for (var campo in pDetalhesAtributo) {
             if(campo == "severidade" && pDados[campo] == 1){
                 
                 this.lsImpeditiva = campo + ' = ' + pDados[campo];
@@ -28,7 +59,7 @@ class TratamentoDados extends UtilXMLParadigma {
         }
 
         console.log(this.lsImpeditiva); 
-        console.log(this.lsInformativa); 
+        console.log(this.lsInformativa);  */
     }
 
     carregar() {   
@@ -78,11 +109,11 @@ class TratamentoDados extends UtilXMLParadigma {
             this._objeto = objeto;
     }
 
-    get lsImpeditiv() {
+    get lsImpeditiva() {
         return this._lsImpeditiva;
     }
-    set lsImpeditiv(lsImpeditiv) {
-            this._lsImpeditiva.push(lsImpeditiv);
+    set lsImpeditiva(lsImpeditiva) {
+            this._lsImpeditiva.push(lsImpeditiva);
     }
 
     get lsInformativa() {

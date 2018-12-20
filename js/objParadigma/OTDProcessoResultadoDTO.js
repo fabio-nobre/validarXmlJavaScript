@@ -29,7 +29,8 @@ class OTDProcessoResultadoDTO extends UtilXMLParadigma {
         this._lstPPRocessoOrdemCompraDTO = [];
         this._lstPPRocessoItemDTO = [];
         this._lstPPRocessoLote = []; 
-
+        this._lstInformacoesAusentes = []; 
+        
         this.carregarDadosBasicosResultadoDTO();
         this.carregarlstPPProcessoOrdemCompra();
         this.carregarlstProcessoItemDTO();
@@ -171,28 +172,16 @@ class OTDProcessoResultadoDTO extends UtilXMLParadigma {
             this._qtFornecedoresConvidadosLicitacao = qtFornecedoresConvidados;
         } else {
 
-            let dados ={
+            let detalhesAtributo =[{
                 msg: 'Quantidade de Fornecedores convidados',
-                severidade: 1,
+                severidade: '1',
                 tag: 'dQtFornecedoresConvidados',
-                obj:this
-                };
+                obj: this
+                }];
 
-            var dado = new TratamentoDados(dados);
-            dado.msg = 'Quantidade de Fornecedores convidados';
-            dado.severidade = 2;
-            dado.tag = 'dQtFornecedoresConvidados';
-            dado.objeto = this;
-            dado.carregar();
- 
-/*            let dados ={
-                  msg: 'Quantidade de Fornecedores convidados',
-                  severidade: 2,
-                  tag: 'dQtFornecedoresConvidados',
-                  obj:this
-                };
-
-            this.verificarPrioridadeDaInformacao(dados); */
+                let respota = new TratamentoDados(detalhesAtributo);
+                this._lstInformacoesAusentes.push(respota);
+                
             //this.msnValidacao += this.montarMensagem('Quantidade de Fornecedores convidados', null, 'dQtFornecedoresConvidados', null);
         }
     }
@@ -205,7 +194,18 @@ class OTDProcessoResultadoDTO extends UtilXMLParadigma {
         if (qtFornecedoresHabilitados != null) {
             this._qtFornecedoresHabilitadosLicitacao = qtFornecedoresHabilitados;
         } else {
-            this.msnValidacao += this.montarMensagem('Numero de Fornecedores Habilitados', null, 'dQtFornecedoresHabilitados', null);
+
+            let detalhesAtributo =[{
+                msg: 'Numero de Fornecedores Habilitados',
+                severidade: '2',
+                tag: 'dQtFornecedoresHabilitados',
+                obj: this
+                }];
+
+            let respota = new TratamentoDados(detalhesAtributo);
+            this._lstInformacoesAusentes.push(respota);
+
+            //this.msnValidacao += this.montarMensagem('Numero de Fornecedores Habilitados', null, 'dQtFornecedoresHabilitados', null);
         }
     }
 
