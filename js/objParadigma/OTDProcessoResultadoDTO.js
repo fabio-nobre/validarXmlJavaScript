@@ -468,8 +468,11 @@ class OTDProcessoResultadoDTO extends UtilXMLParadigma {
             pVoSolicitacaoCompra._nuAnoSolicitacaoCompra = listaOrdemCompra[key]._nuAnoSolicitacaoCompra;
             
         }
-
-        //return this.dadosBasicoProcessoLicitacao(pVolicitacao); 
         return this.dadosGenericoBasicoProcessoLicitacao(pVoSolicitacaoCompra); 
+    } 
+    
+    getDadosProcessoItensLicitacao(pVoLicitacaoItem){
+        
+        return this.dadosGenericoBasicoProcessoLicitacao(pVoLicitacaoItem); 
     } 
 }

@@ -1,15 +1,13 @@
-class VOLicitacaoItem extends VOEntidade {
+class VOLicitacaoItem {
 
     constructor() {
-
-        super();
-        this._SqLicitacaoItem
-        CdMaterialServicoItem
+        this._SqLicitacaoItem;
+        /* this._CdMaterialServicoItem
         CdUnidadeFornecimento
         QtLicitadaLicitacaoItem
         VlMaximoLicitLicitacaoItem
         QtConcorrentesLicitacaoItem
-        CdSolicitacaoCompra
+        CdSolicitacaoCompra */
     }
 
     get colecaoSolicitacaoCompraItem(){

@@ -18,6 +18,7 @@
     <script src="js/objParadigma/TratamentoDados.js"></script>
     <script src="js/objSefaz/VOLicitacao.js"></script>
     <script src="js/objSefaz/VOSolicitacaoCompra.js"></script>
+    <script src="js/objSefaz/VOLicitacaoItem.js"></script>
     
  
     <script>
@@ -49,6 +50,12 @@
             var dadosSolicitacaoCompra = document.getElementById('dadosSolicitacaoCompra');
             dadosSolicitacaoCompra.innerHTML = otd.getDadosProcessoSolicitacaoCompra(new VOSolicitacaoCompra);
             jQuery(dadosSolicitacaoCompra).slideToggle("slow");
+        } 
+   
+        function dadosItensLicitacao(){
+            var dadosItensLicitacao = document.getElementById('dadosItensLicitacao');
+            dadosItensLicitacao.innerHTML = otd.getDadosProcessoItensLicitacao(new VOLicitacaoItem);
+            jQuery(dadosItensLicitacao).slideToggle("slow");
         } 
     </script>
 

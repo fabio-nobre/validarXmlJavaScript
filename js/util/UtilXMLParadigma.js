@@ -212,13 +212,19 @@ class UtilXMLParadigma {
 
             const listaDadosTabela = this.getVo(pVolicitacao);
             var cont = 2;
-            for(var campo in listaDadosTabela) {
-                htmlDadosProcesso +=  (cont % 2 === 0 ? '<TR><TH class="campoformulario" width="15%">' : '<TH class="campoformulario" width="15%">') + campo +'</TH>'
-                            +'<TD class="tabeladados" width="35%">' + listaDadosTabela[campo] + (cont % 2 !== 0 ? '</TD></TR>' : '</TD>');
-                cont++;
-             }
-      
-            return htmlDadosProcesso += '</TBODY></TABLE>';
+            if(listaDadosTabela.length == 0){
+                return htmlDadosProcesso += '<TR><TH class="campoformulario" width="100%">Não há dados para exibir</TH></TR></TBODY></TABLE>';
+            }
+
+                for(var campo in listaDadosTabela) {
+                    htmlDadosProcesso +=  (cont % 2 === 0 ? '<TR><TH class="campoformulario" width="15%">' : '<TH class="campoformulario" width="15%">') + campo +'</TH>'
+                    +'<TD class="tabeladados" width="35%">' + listaDadosTabela[campo] + (cont % 2 !== 0 ? '</TD></TR>' : '</TD>');
+                    cont++;
+                }
+                
+                return htmlDadosProcesso += '</TBODY></TABLE>';
+            
+            
     
         }
 
@@ -248,6 +254,16 @@ class UtilXMLParadigma {
                     'Código Unidade Gestora:'           : pVo._cdUnidadeGestora,
                     'Descrição Resumida SA:'            : pVo._dsResumidaSolicitacaoCompra,
                     'Ano da Solicitacão de Compra:'     : pVo._nuAnoSolicitacaoCompra }
+                
+                return listaDadosTabela;
+            }
+            if(pVo instanceof VOLicitacaoItem){
+                const listaDadosTabela = "";
+                /* {   'Solicitacao Compra PeIntegrado:'   : pVo._cdSolicitacaoCompraPeIntegrado,
+                    'Código Unidade Gestora Gestão:'    : pVo._cdUnidadeGestoraGestao,
+                    'Código Unidade Gestora:'           : pVo._cdUnidadeGestora,
+                    'Descrição Resumida SA:'            : pVo._dsResumidaSolicitacaoCompra,
+                    'Ano da Solicitacão de Compra:'     : pVo._nuAnoSolicitacaoCompra } */
                 
                 return listaDadosTabela;
             }
