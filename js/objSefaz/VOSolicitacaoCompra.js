@@ -1,8 +1,7 @@
-class VOSolicitacaoCompra extends VOEntidade {
+class VOSolicitacaoCompra {
 
     constructor() {
 
-        super();
         this._cdSolicitacaoCompraPeIntegrado;
         this._cdUnidadeGestoraGestao
         this._cdUnidadeGestora

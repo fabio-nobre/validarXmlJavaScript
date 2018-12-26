@@ -1,0 +1,615 @@
+
+HTML {
+	background-color: #f7f7f7;
+	background-image: url("/sfi/imagens/bg_topo.png");
+}
+
+/* Classes para Tag BODY */ /* Corpo padrão da página*/
+BODY {
+	scrollbar-face-color: #A5B9D7;
+	scrollbar-highlight-color: #FFFFFF;
+	scrollbar-shadow-color: #486088;
+	scrollbar-3dlight-color: #98acc0;
+	scrollbar-arrow-color: #ffffff;
+	scrollbar-track-color: #F8F8F8;
+	scrollbar-darkshadow-color: #000000;
+	background-color: #fff;
+	font-family: Helvetica, Arial, sans-serif;
+	vertical-align: top;
+	margin: auto;
+	margin-top: 0;
+	margin-bottom: 0;
+	max-width: 4096px;
+	min-width: 770px;
+}
+
+#fundoCorpoPagina {
+	border: solid 1px #ccc;
+	border-top: 0;
+	border-bottom: 0;
+	background-color: #fff;
+	max-width: 4096px;
+	min-width: 770px;
+	width: 100%;
+	margin-left: -1px;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	z-index: -100000;
+}
+
+/* Cabeçalho */
+#areaCabecalho {
+	position: relative;
+	z-index: 0;
+	height: 100px;
+	font-weight: bold;
+	overflow: hidden;
+}
+
+#bgCabecalho {
+	position: absolute;
+	z-index: -2;
+	width: 100%;
+	height: 100%;
+	background: url('/sfi/imagens/bg_topo_fulll.png') repeat-x scroll left
+		top transparent;
+	background-size: 100%;
+}
+
+div.bgCabecalho {
+	height: 100%;
+	background: url('/sfi/imagens/bg_topo.png') repeat scroll 0 0
+		transparent;
+}
+
+#logotipo {
+	max-height: 100%;
+	position: absolute;
+}
+
+#bgAreaInfoTopo {
+	position: absolute;
+	z-index: -1;
+	padding-bottom: 29px;
+	padding-left: 260px;
+	right: 0px;
+	opacity: 0.7;
+	-webkit-border-bottom-left-radius: 3px;
+	-moz-border-radius-bottomleft: 3px;
+	border-bottom-left-radius: 3px;
+	background: url('/sfi/imagens/bg_topo_fulll.png') repeat scroll 0 0
+		transparent;
+	display: none;
+}
+
+#areaLogotipoSefaz {
+	position: absolute;
+	height: 95%;
+	float: left;
+	margin-left: 212px;
+	margin-top: 7px;
+}
+
+#imgLogotipoSefaz {
+	max-height: 100%;
+	position: absolute;
+	margin-top: 2px;
+}
+
+#areaFormTopo {
+	float: right;
+	color: #fff;
+	height: inherit;
+}
+
+#areaInfoTopo {
+	padding-right: 4px;
+	padding-top: 4px;
+	font-size: 13px;
+	text-align: right;
+}
+
+#areaInfoComplementar {
+	float: right;
+	padding: 5px;
+	display: inline-block;
+	text-align: right;
+	margin-top: 12px;
+	margin-right: 4px;
+	font-size: 11px;
+	font-weight: normal;
+	border-radius: 3px;
+	border: solid 1px #05b;
+	background: #06b;
+	background: rgba(0, 0, 0, 0.1);
+}
+
+#botaoAjuda {
+	display: inline-block;
+	padding: 2px;
+	margin: 0;
+	min-width: 24px;
+	width: 0;
+	display: none;
+}
+@-moz-document url-prefix() {
+	#botaoAjuda { padding: 1px; }
+}
+
+.infoComplementar, .infoComplementarAlerta {
+	text-align: left;
+}
+
+.infoComplementarAlerta {
+	color: yellow;
+}
+
+.infoComplementar, .infoComplementarAlerta, #linkEncerrarSessao {
+	display: block;
+}
+
+#linkEncerrarSessao {
+	font: 10px verdana;
+	font-weight: bold;
+	margin-top: 5px;
+}
+
+#linkEncerrarSessao:hover, #linkEncerrarSessao:active, #linkEncerrarSessao:focus, #linkEncerrarSessao:visited {
+	color: #cef;
+	text-decoration: underline !important;
+}
+
+#cabecalhoUnidadeAlocacao {
+	background-color: #eef;
+	padding: 2px;
+	border-top: solid 1px #ccc;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #003399;
+	text-align: right;
+}
+
+
+
+/* CSS das áreas */
+div.conteudodados {
+	background-color: transparent
+}
+
+/* Costumizando campos de formulario*/
+.conteudodados input[type="text"],.conteudodados textarea,.conteudodados select
+	{
+	background-image: none;
+}
+
+/* Representa um campo somente leitura destacado no formulário*/
+.camporeadonlydestacado {
+	background-color: #FFFFCC;
+}
+
+.camponaoobrigatorio,.campoobrigatorio,.camporeadonly,select {
+	border: 1px solid #AAAAAA;
+	color: #222;
+	text-shadow: 0 1px 0 #FFFFFF;
+	font-family: Helvetica, Arial, sans-serif;
+	list-style: disc;
+	font-size: 13px;
+	padding: 3px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2) inset;
+	background: #f9f9f9;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#f9f9f9),
+		to(#eee) );
+	background-image: -webkit-linear-gradient(#f9f9f9, #eee);
+	background-image: -moz-linear-gradient(#f9f9f9, #eee);
+	background-image: -ms-linear-gradient(#f9f9f9, #eee);
+	background-image: -o-linear-gradient(#f9f9f9, #eee);
+	background-image: linear-gradient(#f9f9f9, #eee)
+}
+
+.checkbox {
+	min-height: 20px;
+	padding-left: 20px;
+	margin-bottom: 5px;
+	display: block;
+	line-height: 20px
+}
+
+.botaofuncaop,.botaofuncaom,.botaofuncaomfino,.botaofuncaog,.botaofuncaog2,.botaoconsulta
+	{
+	border: 1px solid #ccc;
+	background: #eee;
+	color: #222;
+	text-shadow: 0 1px 0 #fff;
+	background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9Imc4MzgiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGRkZGRkYiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiNGMUYxRjEiIG9mZnNldD0iMSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2c4MzgpIiAvPgo8L3N2Zz4=);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#fff),
+		to(#f1f1f1) );
+	background-image: -webkit-linear-gradient(#fff, #f1f1f1);
+	background-image: -moz-linear-gradient(#fff, #f1f1f1);
+	background-image: -ms-linear-gradient(#fff, #f1f1f1);
+	background-image: -o-linear-gradient(#fff, #f1f1f1);
+	background-image: linear-gradient(#fff, #f1f1f1);
+	background-clip: padding-box;
+	padding: 3px 10px;
+	font-size: 13px;
+	font-weight: bold;
+	font-family: Helvetica, Arial, sans-serif;
+	cursor: pointer;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	max-width: 18%;
+	min-width: 12%;
+}
+
+.botaofuncaop:hover,.botaofuncaom:hover,.botaofuncaomfino:hover,.botaofuncaog:hover,.botaofuncaog2:hover,.botaoconsulta:hover
+	{
+	background: #dfdfdf; /* Old browsers */
+	background: -moz-linear-gradient(top, #ededed 0%, #f6f6f6 47%, #e0e0e0 100%)
+		; /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ededed),
+		color-stop(47%, #f6f6f6), color-stop(100%, #e0e0e0) );
+	/* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #ededed 0%, #f6f6f6 47%, #e0e0e0 100%)
+		; /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #ededed 0%, #f6f6f6 47%, #e0e0e0 100%)
+		; /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #ededed 0%, #f6f6f6 47%, #e0e0e0 100%)
+		; /* IE10+ */
+	background: linear-gradient(to bottom, #ededed 0%, #f6f6f6 47%, #e0e0e0 100%)
+		; /* W3C */
+	filter: progid :   DXImageTransform.Microsoft.gradient (    
+		startColorstr = 
+		 '#ededed', endColorstr =   '#e0e0e0', GradientType =   0 );
+	/* IE6-9 */
+	border: 1px solid #bbb;
+	font-weight: bold;
+	color: #222;
+	text-shadow: 0 1px 0 #fff;
+}
+
+.botaooculto {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 1px;
+	height: 1px;
+	z-index: -1000;
+	visibility: hidden;
+}
+
+/*Estilos evento focus dos campos de formulario*/
+.botaofuncaop:focus,.botaofuncaom:focus,.botaofuncaomfino:focus,.botaofuncaog:focus,.botaofuncaog2:focus,.botaoconsulta:focus {
+	box-shadow: 0 0 3px #AAAAAA inset, 0 0 4px #AAAAAA;
+}
+
+.botaofuncaop:disabled,.botaofuncaom:disabled,.botaofuncaomfino:disabled,.botaofuncaog:disabled,.botaofuncaog2:disabled,.botaoconsulta:disabled {
+	cursor: auto;
+	background: #dfdfdf; 
+	
+}
+
+/* Representa um campo obrigatório */
+.campoobrigatorio {
+	border: 1px solid #FFA500;
+}
+
+/* Representa um campo somente leitura no formulário*/
+.camporeadonly {
+	border: 1px solid #CCC;
+	background: rgb(245, 245, 245); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(245, 245, 245, 1) 0%,
+		rgba(234, 234, 234, 1) 100% ); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(245,
+		245, 245, 1) ), color-stop(100%, rgba(234, 234, 234, 1) ) );
+	/* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, rgba(245, 245, 245, 1) 0%,
+		rgba(234, 234, 234, 1) 100% ); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, rgba(245, 245, 245, 1) 0%,
+		rgba(234, 234, 234, 1) 100% ); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, rgba(245, 245, 245, 1) 0%,
+		rgba(234, 234, 234, 1) 100% ); /* IE10+ */
+	background: linear-gradient(to bottom, rgba(245, 245, 245, 1) 0%,
+		rgba(234, 234, 234, 1) 100% ); /* W3C */
+	filter: progid :   DXImageTransform.Microsoft.gradient (    
+		startColorstr = 
+		 '#f5f5f5', endColorstr =   '#eaeaea', GradientType =   0 );
+	/* IE6-9 */
+	cursor: default !important;
+	zoom: 1;
+	color: #757575;
+}
+
+
+/* ModalWindow */
+
+.ModalWindowContainer {
+	background: #d8e1ED;
+	padding: 1px;
+	margin: 2px;
+}
+
+.ModalWindowBox {
+	background: #000066;
+	border-width: 0px;
+}
+
+.ModalWindowBox a:link,.ModalWindowBox a:visited {
+	border: 1px solid #cccccc;
+	padding: 2px 5px;
+	background: #e3e3e3;
+	margin-right: 6px;
+}
+
+.ModalWindowBox a:hover,.ModalWindowBox a:active {
+	background: #efefef;
+}
+
+.ModalWindowBoxRed {
+}
+
+.ModalWindowContainerRed {
+	position:absolute; 
+	z-index: 1000; 
+	background-color:#000; 
+	padding:10px 5px 10px 40px;
+	background:url('/sfi/imagens/progresso.gif') no-repeat 2% 50%;
+	background-color:#cecece; 
+	height:auto;
+	box-shadow:0 1px 1px #999; 
+	border-radius:6px; 
+	border:1px solid #8d8c8c
+}
+
+.ModalWindowTitle {
+	color: white;
+	width: 100%;
+	font-size: 14px;
+	font-weight: bold;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	
+	background: #006CA9;
+	text-shadow: 0 1px 1px #194b7e;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#00599C),
+		to(#006CA9) );
+	background-image: -webkit-linear-gradient(#00599C, #006CA9);
+	background-image: -moz-linear-gradient(#00599C, #006CA9);
+	background-image: -ms-linear-gradient(#00599C, #006CA9);
+	background-image: -o-linear-gradient(#00599C, #006CA9);
+	background-image: linear-gradient(#00599C, #006CA9);
+	/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00599C', endColorstr='#006CA9',GradientType=0 ); /* IE6-9 */
+	background-clip: padding-box;
+}
+
+.ModalWindowCloseLink {
+	background: #000066;
+	color: white;
+	width: 100%;
+}
+
+.ModalWindowMessage {
+	background: #f8f8f8;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #00398C;
+	margin-top: 1px;
+	overflow: auto;
+}
+
+.ModalWindowMessageWhite {
+	font-family:Verdana, Geneva, sans-serif; 
+	text-shadow:1px 1px 1px #FFFFFF;
+}
+
+.ModalWindowButtons {
+	background-color: white;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	text-align: right;
+	border-top: 1px solid #000000;
+	padding: 10px 5px;
+}
+
+.ModalWindowButton {
+	background-color: #D8E1ED;
+	font-size: 11px;
+	font-family: Arial, Helvetica, sans-serif;
+	width: 100px;
+	margin-right: 10px;
+	border: 3px outset #D8E1ED;
+	border-bottom: 2px outset #D8E1ED;
+}
+
+.ModalWindowScroll {
+	background: #d8e1ED;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #00398C;
+	overflow: auto;
+	height: 200px;
+}
+
+
+/* Auto completar */
+.autocompletar,.autocompletar_text {
+	position: absolute;
+	display: inline-block;
+	min-width: 105px;
+	max-width: 310px;
+	width: 40%;
+	color: #222;
+	overflow: hidden;
+	z-index: 10;
+	padding: 3px;
+	margin-top: 29px;
+	margin-left: 5px;
+	background-color: #ffffff;
+	border: 1px solid #ccc;
+	border: 1px solid rgba(0, 0, 0, 0.2); *
+	border-right-width: 2px; *
+	border-bottom-width: 2px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding;
+	background-clip: padding-box;
+}
+
+.autocompletar_text {
+	margin-top: 23px;
+	margin-left: 3px;
+}
+
+.autocompletar_campo_combobox {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	margin-right: 0;
+	border-right: none;
+}
+
+.autocompletar_botao,
+.autocompletar_botao_ie9,
+.autocompletar_botao_ie8 {
+	width: 16px;
+	height: 22px;
+	display: inline-block;
+	position: absolute;
+	margin: 0;
+	margin-top: 1px;
+	margin-left: 0px;
+	padding: 0;
+}
+
+.autocompletar_botao_ie9 {
+	height: 21px;
+}
+
+.autocompletar_botao_ie8 {
+	margin-left: -4px;
+}
+
+
+/* Rodape */
+#rodapeDebug { clear: both; overflow-x: auto; text-align: center; border: solid 1px #CCCCCC; border-left: none; border-right: none; margin-top: 5px; display: inline-block; width: 100%; font-size: 12px; }
+
+
+/* Barra de alerta SCA desativado */
+#barraAlertaSCA {
+	height: 15px;
+	border: solid 1px #135;
+	border-left: 0;
+	border-right: 0;
+	background-color: #357;
+	box-shadow: 1px 0px 3px rgba(0, 0, 0, 0.3) inset;
+	font-size: 11px;
+	padding-top: 2px;
+	padding-right: 3px;
+	line-height: 15px;
+	overflow: hidden;
+	text-align: right;
+	color: #ff0;
+	font-weight: bold;
+}
+
+
+/* Barra de desenvolvimento */
+#areaBarraDesenvolvimento {
+	height: 15px;
+	border-bottom: solid 1px #135;
+	background-color: #357;
+	box-shadow: 1px 0px 3px rgba(0, 0, 0, 0.3) inset;
+}
+#painelBarraDesenvolvimento {
+	float: right;
+	width: 269px;
+}
+#barraDesenvolvimento {
+	display: inline-block;
+	position: fixed;
+	z-index: 2000;
+	height: 15px;
+	width: 265px;
+	border-bottom-left-radius: 10px;
+	border-bottom: solid 1px #135;
+	border-left: solid 1px #135;
+	background-color: #357;
+	background-color: rgba(51, 85, 119, 0.8);
+	box-shadow: 1px 0px 3px 1px rgba(0, 0, 0, 0.3) inset;
+	font-size: 11px;
+	padding-right: 3px;
+	color: #fff;
+	line-height: 15px;
+	overflow: hidden;
+	text-align: right;
+}
+.barraDesenTitulo { color: #ff0; font-weight: bold; }
+
+
+/* Responsividade da página */
+@media (min-width: 0) {
+	body { min-width: 310px; }
+}
+
+
+/* Responsividade dos botões */
+@media ( max-width : 450px) {
+	.botaofuncaop,.botaofuncaom,.botaofuncaomfino,.botaofuncaog,.botaofuncaog2,.botaoconsulta
+		{
+		max-width: 30%;
+		min-width: 27%;
+	}
+}
+
+
+/* Responsividade do cabeçalho */
+@media ( max-width : 871px) {
+	#areaLogotipoSefaz {
+		display: none;
+	}
+}
+
+@media ( max-width : 520px) , ( max-height : 590px) {
+	#areaCabecalho {
+		height: 73px;
+	}
+	#areaLogotipoSefaz {
+		margin-left: 152px;
+		margin-top: 1px;
+	}
+	#areaInfoComplementar {
+		margin-top: 3px;
+		padding-bottom: 3px;
+		padding-top: 3px;
+	}
+	.infoComplementar, .infoComplementarAlerta {
+		display: inline-block;
+		border: solid 1px #25C;
+		background-color: rgba(0, 0, 0, 0.05);
+		box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2) inset; 
+		padding: 1px;
+		padding-left: 3px;
+		padding-right: 3px;
+		border-radius: 3px;
+	}
+	#linkEncerrarSessao {
+		margin-top: 3px;
+	}
+}
+
+@media ( max-width : 445px) {
+	#bgAreaInfoTopo {
+		display: block;
+	}
+	#areaInfoComplementar {
+		background: rgba(0, 0, 50, 0.3);
+	}
+}

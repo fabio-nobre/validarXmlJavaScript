@@ -3,8 +3,8 @@
       <RetornarPProcessoResultadoNegociacaoResponse xmlns="http://tempuri.org/">
          <RetornarPProcessoResultadoNegociacaoResult xmlns:a="http://schemas.datacontract.org/2004/07/Paradigma.Wbc.Servico.DTO" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
             <a:PProcessoResultadoParcialDTO>
-               <a:dQtFornecedoresConvidados></a:dQtFornecedoresConvidados>
-               <a:dQtFornecedoresHabilitados></a:dQtFornecedoresHabilitados>
+               <a:dQtFornecedoresConvidados>302</a:dQtFornecedoresConvidados>
+               <a:dQtFornecedoresHabilitados>12</a:dQtFornecedoresHabilitados>
                <a:dQtFornecedoresParticipantes>3</a:dQtFornecedoresParticipantes>
                <a:lstPPProcessoOrdemCompra>
                   <a:PProcessoOrdemCompraNegociacaoDTO>

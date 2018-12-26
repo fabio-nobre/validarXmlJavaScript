@@ -1,7 +1,6 @@
-class VOLicitacao extends VOEntidade {
+class VOLicitacao {
 
     constructor() {
-        super();
         this._nuProcessoLicitacao;
         this._cdModalidadeLicitacao;
         this._dtPublicacaoEditalLicitacao;

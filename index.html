@@ -4,6 +4,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link type="text/css" href="estilos/sefaz_pe.css" rel="stylesheet">
+    <link type="text/css" href="estilos/sefaz_pe_base.css" rel="stylesheet">
+    <link type="text/css" href="estilos/css_base_gbp.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="js/util/UtilXMLParadigma.js"></script>
     <script src="js/objParadigma/OTDProcessoResultadoDTO.js"></script>
@@ -13,8 +16,12 @@
     <script src="js/objParadigma/PProcessoLoteDTO.js"></script>
     <script src="js/objParadigma/PProcessoLoteResultadoDTO.js"></script>
     <script src="js/objParadigma/TratamentoDados.js"></script>
-
+    <script src="js/objSefaz/VOLicitacao.js"></script>
+    <script src="js/objSefaz/VOSolicitacaoCompra.js"></script>
+    
+ 
     <script>
+        var otd;
         function handleFiles(evt) {
 
             var file = evt.files[0];
@@ -24,23 +31,28 @@
                 const xmlDocument = new DOMParser().parseFromString(this.result, "text/xml");
                 const pProcessoResultadoParcial = xmlDocument.getElementsByTagName("a:PProcessoResultadoParcialDTO");
                 const otdProcesso = new OTDProcessoResultadoDTO(pProcessoResultadoParcial);
-                //console.log(otdProcesso);
-                console.log(otdProcesso.getMsgProcessoResultado());
-                document.getElementById('conteudo').innerHTML = otdProcesso.getMsgProcessoResultado();
-
+                otd = otdProcesso;
+                document.getElementById('conteudo').innerHTML = otdProcesso.getTabelaProcessoImportado();
+                
             });
             leitor.readAsText(file);
-
+            
         };
+        
+        function dadosBasicoProcessoLicitacao(){
+            var dadosBasicoProcessoLicitacao = document.getElementById('dadosBasicoProcessoLicitacao');
+            dadosBasicoProcessoLicitacao.innerHTML = otd.getDadosBasicoProcessoLicitacao(new VOLicitacao);
+            jQuery(dadosBasicoProcessoLicitacao).slideToggle("slow");
+        } 
+       
+        function dadosSolicitacaoCompra(){
+            var dadosSolicitacaoCompra = document.getElementById('dadosSolicitacaoCompra');
+            dadosSolicitacaoCompra.innerHTML = otd.getDadosProcessoSolicitacaoCompra(new VOSolicitacaoCompra);
+            jQuery(dadosSolicitacaoCompra).slideToggle("slow");
+        } 
     </script>
 
     <style>
-        /*.body {
-                font: 400 12px Lato, sans-serif;
-                line-height: 1.8;
-                color: #818181;
-        }*/
-
         .jumbotron {
             background-color: #f4511e;
             color: #fff;
@@ -49,6 +61,15 @@
             height: 150;
             padding-top: 2px;
         }
+        a {
+            font-size: 15px; 
+            color: #F0FFFF;
+        }
+        a:focus, a:hover {
+            color: #F0FFFF;
+            text-decoration: underline;
+        }
+
     </style>
 </head>
 
@@ -62,10 +83,5 @@
         </form>
     </div>
 
-    <!--<div class="table-responsive">
-        <table class="table table-bordered">
-            <tbody id="conteudo"></tbody>
-        </table>
-    </div>-->
-    <div id="conteudo"></div>
+   <div id="conteudo"></div>
 </body>

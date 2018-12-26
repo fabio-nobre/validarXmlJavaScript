@@ -1,86 +1,40 @@
 class TratamentoDados extends UtilXMLParadigma{
-    constructor(pDetalhesAtributo) {
+    constructor() {
 
        super();
         this._msg;
         this._severidade;
         this._tag;
         this._objeto;
-        this._lsImpeditiva = [];
-        this._lsInformativa = [];
-        
-        //this.carregar();
-        this.carregarTratamentoDados(pDetalhesAtributo);
+        this._dadoImpeditivo;
+        this._dadoInformativo;
+        this._listaDados = [];
     }
 
-    carregarTratamentoDados(pDetalhesAtributo) {   
-
+    // Monta uma lista e devolve o objeto referente a sua severidade
+    montarObjetoESeveridade() {   
         
+        // Adciona na lista (listaDados) as informações do dado não recuperado do xml
+        this.addInformacoes({ msg: this._msg, severidade: this._severidade, tag: this._tag, obj: this._objeto});
         
-        /* console.log(produtos.filter(function(p) {
-            return false
-        })) */
-        
-        
-        const impeditivo = dadoImp => dadoImp.severidade == '1'
-        this.lsImpeditiva = pDetalhesAtributo.filter(impeditivo);
-        console.log(this.lsImpeditiva)
-        
-        
-        const informativa = dadoInf => dadoInf.severidade == '2'
-        this.lsInformativa = pDetalhesAtributo.filter(informativa);
-        console.log(this.lsInformativa)
-        
-        if(this.lsImpeditiva.length != 0){
-            return this.lsImpeditiva;
-        } else if(this.lsInformativa.length != 0){
-            return this.lsInformativa;
-        }
- 
-
-        /* console.log(pDetalhesAtributo.filter(impeditivo))
-        if(pDetalhesAtributo.filter(impeditivo) > 0){
-            this.lsImpeditiva = pDetalhesAtributo;
-        } else {
-            this.lsInformativa = pDetalhesAtributo;
-
-        } */
-        
-        
-/*         for (var campo in pDetalhesAtributo) {
-            if(campo == "severidade" && pDados[campo] == 1){
+        // Define os Filtros de Severidade das informações
+        const informativo   = dadoInf => dadoInf.severidade == 2
+        const impeditivo    = dadoImp => dadoImp.severidade == 1
                 
-                this.lsImpeditiva = campo + ' = ' + pDados[campo];
-            } else {
-                this.lsInformativa = campo + ' = ' + pDados[campo];
-            }
+        // Monta objeto conforme filtro de severidade e converte a lista (listaDados) para o objeto{} equivalente
+        this.dadoImpeditivo     = Object.assign({}, this._listaDados.filter(impeditivo));
+        this.dadoInformativo    = Object.assign({}, this._listaDados.filter(informativo));
 
-               
-        }
-
-        console.log(this.lsImpeditiva); 
-        console.log(this.lsInformativa);  */
+        return this.dadoImpeditivo[0] !== undefined ? this.dadoImpeditivo[0] : this.dadoInformativo[0];        
     }
 
-    carregar() {   
         
-            if(this.severidade == 1){
-                this.lsImpeditiva = this.msg;
-                this.lsImpeditiva = this.severidade;
-                this.lsImpeditiva = this.tag;
-                this.lsImpeditiva = this.objeto;
-            } else {
-                this.lsInformativa = this.msg;
-                this.lsInformativa = this.severidade;
-                this.lsInformativa = this.tag;
-                this.lsInformativa = this.objeto;
-            }
-
-
-        console.log(this.lsImpeditiva); 
-        console.log(this.lsInformativa); 
+    // Adcionar objeto na lista de dados que não foram preenchidos
+    addInformacoes(...dados) {
+        dados.forEach(l => this._listaDados.push(l))
     }
 
+    // GETS e SETS
     get msg() {
         return this._msg;
     }
@@ -109,26 +63,18 @@ class TratamentoDados extends UtilXMLParadigma{
             this._objeto = objeto;
     }
 
-    get lsImpeditiva() {
-        return this._lsImpeditiva;
+    get dadoImpeditivo() {
+        return this._dadoImpeditivo;
     }
-    set lsImpeditiva(lsImpeditiva) {
-            this._lsImpeditiva.push(lsImpeditiva);
-    }
-
-    get lsInformativa() {
-        return this._lsInformativa;
-    }
-    set lsInformativa(lsInformativa) {
-            this._lsInformativa.push(lsInformativa);
+    set dadoImpeditivo(dadoImpeditivo) {
+            this._dadoImpeditivo = dadoImpeditivo;
     }
 
-/*     get carregar() {
-        return this._carregar;
+    get dadoInformativo() {
+        return this._dadoInformativo;
     }
-    set carregar(carregar) {
-        this._carregar = _carregar;
-    } */
-    
+    set dadoInformativo(dadoInformativo) {
+            this._dadoInformativo =  dadoInformativo;
+    }  
 
 }
